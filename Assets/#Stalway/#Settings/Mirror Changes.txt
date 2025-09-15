@@ -1,0 +1,2 @@
+SyncVarAttributeProcessor.cs 55
+return new FieldDefinition(syncVarHookDelegateFieldName, FieldAttributes.Private, syncVarHookActionDelegateType);
