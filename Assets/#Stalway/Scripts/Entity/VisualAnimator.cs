@@ -43,6 +43,9 @@ public class VisualAnimator : SerializedMonoBehaviour
 
     protected virtual void LateUpdate()
     {
+        //if (!AbillityMovement.AuthorityCorrect())
+        //    return;
+
         var jump = AbillityCollisioner.IsAir();
         var rawVelocity = RootTransform.InverseTransformVector(AbillityMovement.GetVelocity() * SpeedMultiplier);
         rawVelocity *= jump && SimpleJump ? 0f : 1f;

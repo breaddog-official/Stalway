@@ -44,10 +44,10 @@ namespace Breaddog.UI
 
             if (ObservingEntity.TryFindAbillity(out AbillityInventory inventory))
             {
-                for (int i = 0; i < inventory.Items.Count; i++)
-                {
-                    SetSprite(WeaponsImages[i], inventory.Items[i]?.InventorySprite);
-                }
+                //for (int i = 0; i < inventory.Items.Count; i++)
+                //{
+                //    SetSprite(WeaponsImages[i], inventory.Items[i]?.InventorySprite);
+                //}
             }
         }
 

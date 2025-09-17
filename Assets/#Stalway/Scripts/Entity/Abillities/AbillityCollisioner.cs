@@ -40,7 +40,6 @@ namespace Breaddog.Gameplay
         [Header("Body Position")]
         [OdinSerialize] public float CheckTolerance { get; private set; }
         [OdinSerialize] public LayerMask SolidMask { get; private set; }
-        [OdinSerialize] public LagCompensator LagCompensator { get; private set; }
         [OdinSerialize] public Collider[] StandColliders { get; private set; }
         [OdinSerialize] public Collider[] CrouchColliders { get; private set; }
         [OdinSerialize] public Collider[] LayColliders { get; private set; }
@@ -101,9 +100,6 @@ namespace Breaddog.Gameplay
 
             foreach (var col in LayColliders)
                 col.enabled = BodyPosition == BodyPosition.Lay;
-
-            if (LagCompensator != null)
-                LagCompensator.trackedCollider = GetColliders()[0];
         }
 
 
@@ -337,10 +333,10 @@ namespace Breaddog.Gameplay
             Gizmos.color = Color.yellow;
             Gizmos.DrawRay(transform.position, rotatedDirection);
 
-            foreach (var col in GetColliders(BodyPosition))
-            {
-                col.GizmosCollider(tolerance: CheckTolerance);
-            }
+            //foreach (var col in GetColliders(BodyPosition))
+            //{
+            //    col.GizmosCollider(tolerance: CheckTolerance);
+            //}
         }
     }
 }

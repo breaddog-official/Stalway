@@ -233,7 +233,7 @@ namespace Breaddog.Extensions
 
         #endregion
 
-        #region Compress Vector2
+        #region Compress Vectors
 
         public static void WriteAndCompressVector2(NetworkWriter writer, Vector2 value, Vector2 precision)
         {
@@ -250,6 +250,27 @@ namespace Breaddog.Extensions
             var x1 = Compression.ScaleToFloat(x, precision.x);
             var y1 = Compression.ScaleToFloat(y, precision.y);
             return new(x1, y1);
+        }
+
+        public static void WriteAndCompressVector3(NetworkWriter writer, Vector3 value, Vector3 precision)
+        {
+            Compression.ScaleToLong(value.x, precision.x, out long x);
+            Compression.ScaleToLong(value.y, precision.y, out long y);
+            Compression.ScaleToLong(value.z, precision.z, out long z);
+            Compression.CompressVarInt(writer, x);
+            Compression.CompressVarInt(writer, y);
+            Compression.CompressVarInt(writer, z);
+        }
+
+        public static Vector3 ReadCompressedVector3(NetworkReader reader, Vector3 precision)
+        {
+            var x = Compression.DecompressVarInt(reader);
+            var y = Compression.DecompressVarInt(reader);
+            var z = Compression.DecompressVarInt(reader);
+            var x1 = Compression.ScaleToFloat(x, precision.x);
+            var y1 = Compression.ScaleToFloat(y, precision.y);
+            var z1 = Compression.ScaleToFloat(z, precision.z);
+            return new(x1, y1, z1);
         }
 
         #endregion

@@ -518,7 +518,6 @@ GameObject:
   - component: {fileID: -7193974891766788558}
   - component: {fileID: -3395518569116787974}
   - component: {fileID: 5070021109857440306}
-  - component: {fileID: 8814679450913194497}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -535,7 +534,7 @@ Transform:
   m_GameObject: {fileID: 4293360596640370608}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41.35, y: 0.82181, z: -1.86}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -912,7 +911,7 @@ MonoBehaviour:
     - Name: ClientSyncRotation
       Entry: 5
       Data: false
-    - Name: CompressInput
+    - Name: Compress
       Entry: 5
       Data: true
     - Name: MovePrecision
@@ -936,6 +935,36 @@ MonoBehaviour:
     - Name: 
       Entry: 4
       Data: 0.001
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: VelocityPrecision
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.01
+    - Name: 
+      Entry: 4
+      Data: 0.01
+    - Name: 
+      Entry: 4
+      Data: 0.01
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: AngularVelocityPrecision
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.01
+    - Name: 
+      Entry: 4
+      Data: 0.01
+    - Name: 
+      Entry: 4
+      Data: 0.01
     - Name: 
       Entry: 8
       Data: 
@@ -971,13 +1000,13 @@ MonoBehaviour:
       Data: 0.4
     - Name: SlopeSpeedMultiplier
       Entry: 4
-      Data: 0.05
+      Data: 0.01
     - Name: AccelerationForce
       Entry: 4
       Data: 250
-    - Name: OppositeForce
+    - Name: AccelerationSmooth
       Entry: 4
-      Data: 300
+      Data: 0.1
     - Name: GroundGravityForce
       Entry: 4
       Data: 90
@@ -1004,7 +1033,7 @@ MonoBehaviour:
       Data: 0.2
     - Name: LookSensitivity
       Entry: 4
-      Data: 10
+      Data: 5
     - Name: MinLookAngle
       Entry: 4
       Data: 60
@@ -1031,7 +1060,6 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 8814679450913194497}
     - {fileID: 3969586866547657116}
     - {fileID: 8722538175834229145}
     - {fileID: 6780543342024150843}
@@ -1061,9 +1089,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: LagCompensator
-      Entry: 10
-      Data: 0
     - Name: StandColliders
       Entry: 7
       Data: 0|UnityEngine.Collider[], UnityEngine.PhysicsModule
@@ -1072,7 +1097,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 10
-      Data: 1
+      Data: 0
     - Name: 
       Entry: 13
       Data: 
@@ -1087,7 +1112,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 10
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 13
       Data: 
@@ -1102,7 +1127,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 10
-      Data: 3
+      Data: 2
     - Name: 
       Entry: 13
       Data: 
@@ -1180,37 +1205,6 @@ MonoBehaviour:
     - Name: ItemParent
       Entry: 6
       Data: 
-    - Name: PrimaryWeaponIndex
-      Entry: 3
-      Data: 0
-    - Name: HolsterWeaponIndex
-      Entry: 3
-      Data: 1
-    - Name: KnifeIndex
-      Entry: 3
-      Data: 2
-    - Name: BombIndex
-      Entry: 3
-      Data: 3
-    - Name: GrenadesIndex
-      Entry: 3
-      Data: 4
-    - Name: CurrentItemIndex
-      Entry: 3
-      Data: -1
-    - Name: Items
-      Entry: 7
-      Data: 0|Mirror.SyncList`1[[Breaddog.Gameplay.StorageManagement.Item, Assembly-CSharp]],
-        Mirror
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
   syncDirection: 0
   syncMode: 0
   syncMethod: 0
@@ -1247,36 +1241,6 @@ MonoBehaviour:
   syncMode: 0
   syncMethod: 0
   syncInterval: 0
---- !u!114 &8814679450913194497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4293360596640370608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a898831dd60c4cdfbfd9a6ea5702ed01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
-  syncDirection: 0
-  syncMode: 0
-  syncMethod: 0
-  syncInterval: 0
-  trackedCollider: {fileID: 3969586866547657116}
-  lagCompensationSettings:
-    historyLimit: 30
-    captureInterval: 0.025
-  historyColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &7664134577797635664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1287,6 +1251,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4967561176491851069}
   - component: {fileID: 6056711431240715065}
+  - component: {fileID: 4326228386825077847}
+  - component: {fileID: 1892387496836597948}
   m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
@@ -1380,6 +1346,186 @@ MonoBehaviour:
     - Name: SpeedMultiplier
       Entry: 4
       Data: 0.7
+--- !u!82 &4326228386825077847
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7664134577797635664}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 6418180475301049370, guid: dc627bea8fa30134ab63f8cb1d412ca5, type: 2}
+  m_PlayOnAwake: 0
+  m_Volume: 0.75
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 1
+  SpatializePostEffects: 1
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0.2
+  MaxDistance: 25
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1892387496836597948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7664134577797635664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c3684b22f00604a97bb68037fcf4cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SteamAudioUnity::SteamAudio.SteamAudioSource
+  directBinaural: 1
+  interpolation: 0
+  perspectiveCorrection: 0
+  distanceAttenuation: 1
+  distanceAttenuationInput: 1
+  distanceAttenuationValue: 1
+  airAbsorption: 1
+  airAbsorptionInput: 0
+  airAbsorptionLow: 1
+  airAbsorptionMid: 1
+  airAbsorptionHigh: 1
+  directivity: 0
+  directivityInput: 0
+  dipoleWeight: 0
+  dipolePower: 0
+  directivityValue: 1
+  occlusion: 1
+  occlusionInput: 0
+  occlusionType: 0
+  occlusionRadius: 1
+  occlusionSamples: 16
+  occlusionValue: 1
+  transmission: 1
+  transmissionType: 1
+  transmissionInput: 0
+  transmissionLow: 1
+  transmissionMid: 1
+  transmissionHigh: 1
+  maxTransmissionSurfaces: 1
+  directMixLevel: 1
+  reflections: 1
+  reflectionsType: 0
+  useDistanceCurveForReflections: 0
+  currentBakedSource: {fileID: 0}
+  reverbTimeLow: 0
+  reverbTimeMid: 0
+  reverbTimeHigh: 0
+  hybridReverbEQLow: 1
+  hybridReverbEQMid: 1
+  hybridReverbEQHigh: 1
+  hybridReverbDelay: 0
+  applyHRTFToReflections: 1
+  reflectionsMixLevel: 1
+  pathing: 0
+  pathingProbeBatch: {fileID: 0}
+  pathValidation: 1
+  findAlternatePaths: 1
+  pathingEQ:
+  - 1
+  - 1
+  - 1
+  pathingSH:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  applyHRTFToPathing: 0
+  pathingMixLevel: 1
+  normalizePathingEQ: 0
 --- !u!1 &8160622068228865166
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,7 +2252,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2412161367050800168, guid: 42d1fff3da9e6d440bcf7a30e1bb9689, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2018221633401667510}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2657195002283232437, guid: 42d1fff3da9e6d440bcf7a30e1bb9689, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3516664344513364977}
+    - targetCorrespondingSourceObject: {fileID: 1166754175604888097, guid: 42d1fff3da9e6d440bcf7a30e1bb9689, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7045817307556999044}
   m_SourcePrefab: {fileID: 100100000, guid: 42d1fff3da9e6d440bcf7a30e1bb9689, type: 3}
 --- !u!1 &723220674632690886 stripped
 GameObject:
@@ -2128,6 +2280,29 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1437281735123575657, guid: 42d1fff3da9e6d440bcf7a30e1bb9689, type: 3}
   m_PrefabInstance: {fileID: 4849188626094547509}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6015370806506876948 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1166754175604888097, guid: 42d1fff3da9e6d440bcf7a30e1bb9689, type: 3}
+  m_PrefabInstance: {fileID: 4849188626094547509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7045817307556999044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6015370806506876948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 396543f86b5e27740a8d4e80c3d3a518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Feet
+  StepSource: {fileID: 4326228386825077847}
+  RayVector: {x: 0, y: -0.01, z: 0}
+  RayLayers:
+    serializedVersion: 2
+    m_Bits: 192
+  Delay: 0.1
 --- !u!1 &6107320955201815835 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7527107826034907346, guid: 42d1fff3da9e6d440bcf7a30e1bb9689, type: 3}
@@ -2143,6 +2318,29 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2412161367050800168, guid: 42d1fff3da9e6d440bcf7a30e1bb9689, type: 3}
   m_PrefabInstance: {fileID: 4849188626094547509}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7470213509686750848 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2657195002283232437, guid: 42d1fff3da9e6d440bcf7a30e1bb9689, type: 3}
+  m_PrefabInstance: {fileID: 4849188626094547509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3516664344513364977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7470213509686750848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 396543f86b5e27740a8d4e80c3d3a518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Feet
+  StepSource: {fileID: 4326228386825077847}
+  RayVector: {x: 0, y: -0.01, z: 0}
+  RayLayers:
+    serializedVersion: 2
+    m_Bits: 192
+  Delay: 0.1
 --- !u!1001 &4949740799270586138
 PrefabInstance:
   m_ObjectHideFlags: 0

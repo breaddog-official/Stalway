@@ -111,14 +111,14 @@ namespace Breaddog.Gameplay
 
         private void SetShoot(bool shoot)
         {
-            if (abillityInventory.SpawnedItem != null)
-            {
-                if (shoot)
-                    abillityInventory.SpawnedItem.StartUsing();
-
-                else
-                    abillityInventory.SpawnedItem.StopUsing();
-            }
+            //if (abillityInventory.SpawnedItem != null)
+            //{
+            //    if (shoot)
+            //        abillityInventory.SpawnedItem.StartUsing();
+            //
+            //    else
+            //        abillityInventory.SpawnedItem.StopUsing();
+            //}
         }
 
         private void SetWalk(bool walk)

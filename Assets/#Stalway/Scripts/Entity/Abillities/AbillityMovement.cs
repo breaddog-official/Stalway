@@ -30,9 +30,11 @@ namespace Breaddog.Gameplay
         [OdinSerialize, ShowIf(nameof(Authority), MoveAuthority.Hybrid)] public bool ClientSyncRotation { get; protected set; }
 
         [Header("Network: Compression")]
-        [OdinSerialize] public bool CompressInput { get; protected set; } = true;
-        [OdinSerialize, ShowIf(nameof(CompressInput))] public Vector2 MovePrecision { get; protected set; } = new(0.01f, 0.01f);
-        [OdinSerialize, ShowIf(nameof(CompressInput))] public Vector2 LookPrecision { get; protected set; } = new(0.01f, 0.01f);
+        [OdinSerialize] public bool Compress { get; protected set; } = true;
+        [OdinSerialize, ShowIf(nameof(Compress))] public Vector2 MovePrecision { get; protected set; } = new(0.01f, 0.01f);
+        [OdinSerialize, ShowIf(nameof(Compress))] public Vector2 LookPrecision { get; protected set; } = new(0.01f, 0.01f);
+        [OdinSerialize, ShowIf(nameof(Compress))] public Vector3 VelocityPrecision { get; protected set; } = new(0.01f, 0.01f, 0.01f);
+        [OdinSerialize, ShowIf(nameof(Compress))] public Vector3 AngularVelocityPrecision { get; protected set; } = new(0.01f, 0.01f, 0.01f);
 
         [Header("Move")]
         [OdinSerialize] public Vector2 MinMoveInput { get; protected set; } = new(0.01f, 0.01f);
@@ -47,7 +49,7 @@ namespace Breaddog.Gameplay
 
         [Header("Forces")]
         [OdinSerialize] public float AccelerationForce { get; protected set; } = 10f;
-        [OdinSerialize] public float OppositeForce { get; protected set; } = 15f;
+        [OdinSerialize] public float AccelerationSmooth { get; protected set; } = 10f;
         [OdinSerialize] public float GroundGravityForce { get; protected set; } = 1f;
         [OdinSerialize] public float AirGravityForce { get; protected set; } = 5f;
         [OdinSerialize] public float JumpForce { get; protected set; } = 5f;
@@ -71,15 +73,19 @@ namespace Breaddog.Gameplay
         [OdinSerialize, PropertyRange(0f, 90f), Unit(Units.Degree)] public float MinLookAngle { get; protected set; } = 90f;
         [OdinSerialize, PropertyRange(0f, 90f), Unit(Units.Degree)] public float MaxLookAngle { get; protected set; } = 90f;
 
+        public Vector2 MinMove => Vector2.Max(MinMoveInput, Compress ? MovePrecision : Vector2.zero);
+        public Vector2 MinLook => Vector2.Max(MinLookInput, Compress ? LookPrecision : Vector2.zero);
 
-
-        public Vector2 MinMove => Vector2.Max(MinMoveInput, CompressInput ? MovePrecision : Vector2.zero);
-        public Vector2 MinLook => Vector2.Max(MinLookInput, CompressInput ? LookPrecision : Vector2.zero);
+        private Vector3 syncVelocity;
+        private Vector3 syncAngularVelocity;
 
         private Vector2 moveInput;
         private Vector2 lookInput;
         private bool jumpInput;
 
+        private double lastMoveTime = -1;
+        private bool lastMoveMode;
+        private Vector2 lastCalculatedVector;
         private float headRotation;
         private PhysicsMaterial physicsMaterial;
 
@@ -136,7 +142,10 @@ namespace Breaddog.Gameplay
 
         private void FixedUpdate()
         {
-            if (NeedApply())
+            // For velocity sync
+            SetDirty();
+
+            if (AuthorityCorrect())
             {
                 if (IsSyncRotation())
                 {
@@ -164,7 +173,7 @@ namespace Breaddog.Gameplay
         {
             moveInput = input;
 
-            if (Authority != MoveAuthority.ClientAuthority)// && moveInput.Abs().GreaterThen(MinMove))
+            if (Authority != MoveAuthority.ClientAuthority && moveInput.Abs().GreaterThen(MinMove))
                 SetDirty();
         }
 
@@ -178,14 +187,32 @@ namespace Breaddog.Gameplay
             if (AirMove == AirMoveMode.None && collisioner.IsAir())
                 return;
 
+            if (moveInput.Abs().LowerThen(MinMove) && (lastMoveTime < 0 || lastMoveMode == true))
+            {
+                lastMoveTime = NetworkTime.time;
+                lastMoveMode = false;
+            }
+
+            else if (moveInput.Abs().GreaterThen(MinMove) && (lastMoveTime < 0 || lastMoveMode == false))
+            {
+                lastMoveTime = NetworkTime.time;
+                lastMoveMode = true;
+            }
+
+
+            var t = (float)MathE.InverseLerp(lastMoveTime, lastMoveTime + 1d, NetworkTime.time);
+
             // Calculate move vector
-            Vector3 calculatedVector = moveInput.normalized.Flatten().ClampMagnitude();
-            calculatedVector *= Mathf.Lerp(AccelerationForce, OppositeForce, -Vector3.Dot(Rigidbody.linearVelocity, calculatedVector)) * calculatedVector.magnitude;
+            Vector3 calculatedVector = moveInput.Flatten().ClampMagnitude();
+            calculatedVector *= AccelerationForce;
             calculatedVector *= Time.fixedDeltaTime;
 
             // Apply multiply if needed
             if (AirMove == AirMoveMode.Multiplied)
                 calculatedVector *= collisioner.IsSlope() ? SlopeSpeedMultiplier : AirSpeedMultiplier;
+
+            //calculatedVector = Vector3.Lerp(lastMoveMode ? Vector3.zero : Vector3.one, calculatedVector, t);
+            //lastCalculatedVector = calculatedVector;
 
             // Apply movement
             Rigidbody.AddForce(calculatedVector, ForceMode.VelocityChange);
@@ -306,24 +333,42 @@ namespace Breaddog.Gameplay
         {
             base.OnSerialize(writer, initialState);
 
-            if (Authority != MoveAuthority.ClientAuthority)
+            if (initialState || !Compress)
             {
-                if (initialState || !CompressInput)
+                if (Authority != MoveAuthority.ClientAuthority)
                 {
+
                     if (IsSyncPosition())
+                    {
                         writer.WriteVector2(moveInput);
+                    }
 
                     if (IsSyncRotation())
+                    {
                         writer.WriteVector2(lookInput);
+                    }
                 }
-                else
+
+                writer.WriteVector3(Rigidbody.linearVelocity);
+                writer.WriteVector3(Rigidbody.angularVelocity);
+            }
+            else
+            {
+                if (Authority != MoveAuthority.ClientAuthority)
                 {
                     if (IsSyncPosition())
+                    {
                         NetworkE.WriteAndCompressVector2(writer, moveInput, MovePrecision);
+                    }
 
                     if (IsSyncRotation())
+                    {
                         NetworkE.WriteAndCompressVector2(writer, lookInput, LookPrecision);
+                    }
                 }
+
+                NetworkE.WriteAndCompressVector3(writer, Rigidbody.linearVelocity, VelocityPrecision);
+                NetworkE.WriteAndCompressVector3(writer, Rigidbody.angularVelocity, AngularVelocityPrecision);
             }
         }
 
@@ -331,25 +376,43 @@ namespace Breaddog.Gameplay
         {
             base.OnDeserialize(reader, initialState);
 
-            if (Authority != MoveAuthority.ClientAuthority)
+            if (initialState || !Compress)
             {
-                if (initialState || !CompressInput)
+                if (Authority != MoveAuthority.ClientAuthority)
                 {
                     if (IsSyncPosition())
+                    {
                         moveInput = reader.ReadVector2();
+                    }
 
                     if (IsSyncRotation())
+                    {
                         lookInput = reader.ReadVector2();
+                    }
                 }
-                else
+
+                syncVelocity = reader.ReadVector3();
+                syncAngularVelocity = reader.ReadVector3();
+            }
+            else
+            {
+                if (Authority != MoveAuthority.ClientAuthority)
                 {
                     if (IsSyncPosition())
+                    {
                         moveInput = NetworkE.ReadCompressedVector2(reader, MovePrecision);
+                    }
 
                     if (IsSyncRotation())
+                    {
                         lookInput = NetworkE.ReadCompressedVector2(reader, LookPrecision);
+                    }
                 }
+
+                syncVelocity = NetworkE.ReadCompressedVector3(reader, VelocityPrecision);
+                syncAngularVelocity = NetworkE.ReadCompressedVector3(reader, AngularVelocityPrecision);
             }
+
         }
 
         #endregion
@@ -381,8 +444,8 @@ namespace Breaddog.Gameplay
             if (!Application.isPlaying)
                 return Vector3.zero;
 
-            if (!isOwned && (Authority == MoveAuthority.ClientAuthority || Authority == MoveAuthority.ServerAuthority))
-                return transform.rotation * TransformSync.velocity;
+            if (!AuthorityCorrect())
+                return syncVelocity;
             else
                 return Rigidbody.linearVelocity;
         }
@@ -393,15 +456,15 @@ namespace Breaddog.Gameplay
             if (!Application.isPlaying)
                 return Vector3.zero;
 
-            if (!isOwned && (Authority == MoveAuthority.ClientAuthority || Authority == MoveAuthority.ServerAuthority))
-                return TransformSync.angularVelocity;
+            if (!AuthorityCorrect())
+                return syncAngularVelocity;
             else
                 return Rigidbody.angularVelocity;
         }
 
 
 
-        private bool NeedApply()
+        public bool AuthorityCorrect()
         {
             return Authority switch
             {
@@ -411,8 +474,8 @@ namespace Breaddog.Gameplay
             };
         }
 
-        // Server authority already checked in NeedApply()
-        private bool IsSyncPosition() => Authority != MoveAuthority.Hybrid || !ClientSyncPosition || isClient;
-        private bool IsSyncRotation() => Authority != MoveAuthority.Hybrid || !ClientSyncRotation || isClient;
+        // Server authority already checked in AuthorityCorrect()
+        public bool IsSyncPosition() => Authority != MoveAuthority.Hybrid || !ClientSyncPosition || isClient;
+        public bool IsSyncRotation() => Authority != MoveAuthority.Hybrid || !ClientSyncRotation || isClient;
     }
 }
