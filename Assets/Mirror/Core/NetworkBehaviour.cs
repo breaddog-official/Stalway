@@ -1,11 +1,10 @@
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using NaughtyAttributes;
 
 namespace Mirror
 {
@@ -30,19 +29,21 @@ namespace Mirror
     // [RequireComponent(typeof(NetworkIdentity))] disabled to allow child NetworkBehaviours
     [AddComponentMenu("")]
     [HelpURL("https://mirror-networking.gitbook.io/docs/guides/networkbehaviour")]
-    public abstract class NetworkBehaviour : SerializedMonoBehaviour
+    public abstract class NetworkBehaviour : MonoBehaviour
     {
         /// <summary>Sync direction for OnSerialize. ServerToClient by default. ClientToServer for client authority.</summary>
         [Tooltip("Server Authority calls OnSerialize on the server and syncs it to clients.\n\nClient Authority calls OnSerialize on the owning client, syncs it to server, which then broadcasts it to all other clients.\n\nUse server authority for cheat safety.")]
-        [ShowIfGroup("SyncsAnything")]
-        [FoldoutGroup("SyncsAnything/Network")] public SyncDirection syncDirection = SyncDirection.ServerToClient;
+        [ShowIf("SyncsAnything")]
+        [Foldout("Network")] public SyncDirection syncDirection = SyncDirection.ServerToClient;
 
         /// <summary>sync mode for OnSerialize</summary>
         // hidden because NetworkBehaviourInspector shows it only if has OnSerialize.
         [Tooltip("By default synced data is sent from the server to all Observers of the object.\nChange this to Owner to only have the server update the client that has ownership authority for this object")]
-        [ShowIf(nameof(syncDirection), SyncDirection.ServerToClient)]
-        [FoldoutGroup("SyncsAnything/Network")] public SyncMode syncMode = SyncMode.Observers;
-        [FoldoutGroup("SyncsAnything/Network")] public SyncMethod syncMethod;
+        //[ShowIf(nameof(syncDirection), SyncDirection.ServerToClient)]
+        [ShowIf("SyncsAnything")]
+        [Foldout("Network")] public SyncMode syncMode = SyncMode.Observers;
+        [ShowIf("SyncsAnything")]
+        [Foldout("Network")] public SyncMethod syncMethod;
 
         /// <summary>sync interval for OnSerialize (in seconds)</summary>
         // hidden because NetworkBehaviourInspector shows it only if has OnSerialize.
@@ -54,7 +55,7 @@ namespace Mirror
         // careful: default of '0.1' may
         [Tooltip("Time in seconds until next change is synchronized to the client. '0' means send immediately if changed. '0.5' means only send changes every 500ms.\n(This is for state synchronization like SyncVars, SyncLists, OnSerialize. Not for Cmds, Rpcs, etc.)")]
         //[PropertyRange(0, 2)]
-        [FoldoutGroup("SyncsAnything/Network")] public float syncInterval = 0;
+        [Foldout("Network")] public float syncInterval = 0;
 
 
         public bool SyncsAnything()

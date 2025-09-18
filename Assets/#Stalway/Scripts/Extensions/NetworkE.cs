@@ -1,6 +1,7 @@
 using Breaddog.Gameplay.StorageManagement;
 using Cysharp.Threading.Tasks;
 using Mirror;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -223,12 +224,23 @@ namespace Breaddog.Extensions
 
         public static void WriteItem(this NetworkWriter writer, Item item)
         {
-            writer.WriteString(item.name);
+            writer.WriteString(JsonConvert.SerializeObject(item));
         }
 
-        public static Item ReadArmor(this NetworkReader reader)
+        public static Item ReadItem(this NetworkReader reader)
         {
-            return Resources.Load<Item>(reader.ReadString());
+            return JsonConvert.DeserializeObject<Item>(reader.ReadString());
+        }
+
+
+        public static void WriteShape(this NetworkWriter writer, Array2D<bool> shape)
+        {
+            writer.WriteArray2D(shape);
+        }
+
+        public static Array2D<bool> ReadShape(this NetworkReader reader)
+        {
+            return reader.ReadArray2D<bool>();
         }
 
         #endregion

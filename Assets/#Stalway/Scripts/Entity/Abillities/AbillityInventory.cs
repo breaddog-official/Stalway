@@ -1,14 +1,19 @@
-using Breaddog.Gameplay.StorageManagement;
-using Mirror;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
+using Breaddog.Network;
 using UnityEngine;
 
 namespace Breaddog.Gameplay
 {
     public class AbillityInventory : Abillity
     {
-        [Header("Links")]
-        [OdinSerialize] public Transform ItemParent { get; private set; }
+        [Header("Backpack")]
+        public Vector2Int BackpackSize { get; private set; }
+
+        public readonly SyncStorage Backpack = new();
+
+
+        public override void OnStartServer()
+        {
+            Backpack.Resize(BackpackSize.x, BackpackSize.y);
+        }
     }
 }

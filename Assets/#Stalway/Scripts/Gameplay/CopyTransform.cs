@@ -1,15 +1,13 @@
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using UnityEngine;
 
 [ExecuteAlways]
-public class CopyTransform : SerializedMonoBehaviour
+public class CopyTransform : MonoBehaviour
 {
-    [OdinSerialize] public Transform From { get; protected set; }
-    [PropertySpace]
-    [OdinSerialize] public bool Position { get; protected set; } = true;
-    [OdinSerialize] public bool Rotation { get; protected set; } = true;
-    [OdinSerialize] public bool Scale { get; protected set; }
+    public Transform From;
+    [Space]
+    public bool Position = true;
+    public bool Rotation = true;
+    public bool Scale;
 
     public Transform Target => transform;
 

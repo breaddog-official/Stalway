@@ -1,6 +1,4 @@
 using Mirror;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,9 +7,9 @@ namespace Breaddog.Gameplay
 {
     public class NetworkDisabler : NetworkBehaviour
     {
-        [PropertyRange(0, 20)]
-        [OdinSerialize, NonSerialized] public int updateFrames = 5;
-        [OdinSerialize, NonSerialized] public Dictionary<Behaviour, EnableConfig> components;
+        [Range(0, 20)]
+        public int UpdateFrames = 5;
+        public Dictionary<Behaviour, EnableConfig> Components;
 
         int currentFrames;
 
@@ -23,7 +21,7 @@ namespace Breaddog.Gameplay
         protected virtual void Update()
         {
             currentFrames++;
-            if (currentFrames > updateFrames)
+            if (currentFrames > UpdateFrames)
             {
                 currentFrames = 0;
                 UpdateStates();
@@ -32,7 +30,7 @@ namespace Breaddog.Gameplay
 
         public void UpdateStates()
         {
-            foreach(var pair in components)
+            foreach (var pair in Components)
             {
                 bool state = (pair.Value.connectionMode != ConnectionMode.Client || NetworkClient.active) &&
                              (pair.Value.connectionMode != ConnectionMode.Server || NetworkServer.active) &&

@@ -60,12 +60,12 @@ Material:
     m_Ints: []
     m_Floats:
     - _AtmosphereThickness: 1.15
-    - _Exposure: 0.43317673
+    - _Exposure: 0.9913819
     - _ImageType: 0
     - _Layout: 0
     - _Mapping: 1
     - _MirrorOnBack: 0
-    - _Rotation: 308.90414
+    - _Rotation: 180
     - _ShiftHue: 0
     - _ShiftSaturation: 1
     - _ShiftValue: 1

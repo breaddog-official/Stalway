@@ -1,14 +1,13 @@
 using UnityEngine;
-using Sirenix.Serialization;
 using Mirror;
 
 namespace Breaddog.Gameplay
 {
     public class AbillityFlashlight : Abillity
     {
-        [field: SyncVar(hook = nameof(UpdateFlashlight))]
-        [OdinSerialize] public bool Enabled { get; private set; }
-        [OdinSerialize] public GameObject Flashlight { get; private set; }
+        [SyncVar(hook = nameof(UpdateFlashlight))]
+        public bool Enabled;
+        public GameObject Flashlight;
 
         [Command]
         public void Toggle()

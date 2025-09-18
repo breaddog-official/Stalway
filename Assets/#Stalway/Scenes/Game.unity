@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.151
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.28155038, g: 0.3050308, b: 0.3490566, a: 1}
+  m_AmbientSkyColor: {r: 0.33918023, g: 0.38507277, b: 0.4409571, a: 1}
   m_AmbientEquatorColor: {r: 0.4528302, g: 0.44543636, b: 0.4207903, a: 1}
   m_AmbientGroundColor: {r: 0.13207549, g: 0.1283375, b: 0.11899254, a: 1}
   m_AmbientIntensity: 0.75
@@ -119,38 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!21 &337730462
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Hidden/SEGI
-  m_Shader: {fileID: 4800000, guid: 5a24b73d03cf92b41a3dd93d42bf3a8c, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Ints: []
-    m_Floats: []
-    m_Colors: []
-  m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!1 &484082736
 GameObject:
   m_ObjectHideFlags: 1
@@ -273,7 +241,7 @@ Transform:
   m_GameObject: {fileID: 484082736}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -90}
+  m_LocalPosition: {x: 22.5, y: 22.5, z: -90}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -309,7 +277,7 @@ Transform:
   m_GameObject: {fileID: 771570424}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: 0, y: 90, z: 0}
+  m_LocalPosition: {x: 22.5, y: 112.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -452,7 +420,7 @@ Transform:
   m_GameObject: {fileID: 1402502039}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
-  m_LocalPosition: {x: -90, y: 0, z: 0}
+  m_LocalPosition: {x: -67.5, y: 22.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -463,6 +431,38 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0b9788365232e634a94180fdfd295908, type: 3}
   m_PrefabInstance: {fileID: 3733791345285113967}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1735555773
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hidden/SEGI
+  m_Shader: {fileID: 4800000, guid: 5a24b73d03cf92b41a3dd93d42bf3a8c, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats: []
+    m_Colors: []
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
 --- !u!1 &1815445088
 GameObject:
   m_ObjectHideFlags: 1
@@ -584,11 +584,45 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1815445088}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.12940954, y: 0.8365163, z: -0.48296294, w: -0.2241439}
-  m_LocalPosition: {x: 212.50002, y: 736.1216, z: 368.0608}
+  m_LocalRotation: {x: -0.16808954, y: 0.73449576, z: -0.6273186, w: -0.19680758}
+  m_LocalPosition: {x: 88.984665, y: 862.03516, z: 115.15481}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1898748543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1898748544}
+  m_Layer: 0
+  m_Name: Managers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1898748544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898748543}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6815782753573925402}
+  - {fileID: 4573089445784755193}
+  - {fileID: 1915390089}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1915390087
@@ -630,12 +664,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1915390087}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1898748544}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &14884436251168550
 MeshCollider:
@@ -2834,7 +2868,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345031556197042119}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12940955, y: -0.8365163, z: 0.48296294, w: 0.22414392}
+  m_LocalRotation: {x: 0.16808954, y: -0.73449576, z: 0.6273186, w: 0.19680756}
   m_LocalPosition: {x: 25.19, y: 20.87, z: -41.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4659,8 +4693,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.99623406, g: 0.95502067, b: 0.8648917, a: 1}
+  m_Intensity: 0.89138186
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4669,7 +4703,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.98768836
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -4970,174 +5004,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a7376a49fb93f4fbaedc62e1703f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WeatherManager
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1970219304542590553}
-    - {fileID: 2100000, guid: 54fe2f000ad8f424fb63cc3ea0ae2bb2, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: DayLength
-      Entry: 4
-      Data: 60
-    - Name: Sunrise
-      Entry: 4
-      Data: 4
-    - Name: Moonrise
-      Entry: 4
-      Data: 22
-    - Name: HoursInDay
-      Entry: 4
-      Data: 24
-    - Name: StartDate
-      Entry: 7
-      Data: System.DateTime, mscorlib
-    - Name: 
-      Entry: 3
-      Data: 634506372000000000
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Directional
-      Entry: 10
-      Data: 0
-    - Name: LightY
-      Entry: 4
-      Data: -150
-    - Name: Weathers
-      Entry: 7
-      Data: 0|WeatherSettings[], Assembly-CSharp
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 1|WeatherSettings, Assembly-CSharp
-    - Name: LightIntensity
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0.204545468
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: LightColorDay
-      Entry: 7
-      Data: UnityEngine.Color, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
-      Data: 0.9585477
-    - Name: 
-      Entry: 4
-      Data: 0.8632076
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: LightColorNight
-      Entry: 7
-      Data: UnityEngine.Color, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0.3915094
-    - Name: 
-      Entry: 4
-      Data: 0.739750743
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: ShadowsStrength
-      Entry: 4
-      Data: 1
-    - Name: SkyboxExposure
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0.25
-    - Name: 
-      Entry: 4
-      Data: 1.0038023
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: AmbientColorDay
-      Entry: 7
-      Data: UnityEngine.Color, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0.368503034
-    - Name: 
-      Entry: 4
-      Data: 0.4266234
-    - Name: 
-      Entry: 4
-      Data: 0.46226418
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: AmbientColorNight
-      Entry: 7
-      Data: UnityEngine.Color, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0.139729425
-    - Name: 
-      Entry: 4
-      Data: 0.1535073
-    - Name: 
-      Entry: 4
-      Data: 0.188679218
-    - Name: 
-      Entry: 4
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Skybox
-      Entry: 10
-      Data: 1
-    - Name: ControlExposure
-      Entry: 5
-      Data: true
-    - Name: ControlRotation
-      Entry: 5
-      Data: true
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
   syncDirection: 0
   syncMode: 0
   syncMethod: 0
   syncInterval: 0.1
+  DayLength: 60
+  Sunrise: 3
+  Moonrise: 23
+  HoursInDay: 24
+  Directional: {fileID: 1970219304542590553}
+  LightY: -150
+  Weathers:
+  - LightIntensity: {x: 0.2, y: 0.9}
+    LightColorDay: {r: 1, g: 0.95615625, b: 0.8632076, a: 1}
+    LightColorNight: {r: 0.69411767, g: 0.86391824, b: 1, a: 1}
+    ShadowsStrength: 1
+    SkyboxExposure: {x: 0.3, y: 1}
+    AmbientColorDay: {r: 0.34091312, g: 0.38726804, b: 0.4433962, a: 1}
+    AmbientColorNight: {r: 0.20016019, g: 0.20896052, b: 0.24528301, a: 1}
+    Skybox: {fileID: 2100000, guid: 54fe2f000ad8f424fb63cc3ea0ae2bb2, type: 2}
+    ControlExposure: 1
+    ControlRotation: 1
 --- !u!23 &2136623931908929172
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7938,7 +7825,7 @@ Camera:
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.3584906, g: 0.3584906, b: 0.3584906, a: 0}
-  m_projectionMatrixMode: 1
+  m_projectionMatrixMode: 0
   m_GateFitMode: 2
   m_FOVAxisMode: 0
   m_Iso: 200
@@ -9817,6 +9704,7 @@ Transform:
   - {fileID: 3054907638607099015}
   - {fileID: 5950370363140313854}
   - {fileID: 773391626}
+  - {fileID: 8265870165144121809}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4380213464880555733
@@ -10115,7 +10003,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1898748544}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &4580729215193789551
 MeshCollider:
@@ -14511,7 +14399,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1898748544}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6816413133427767645
 GameObject:
@@ -16974,7 +16862,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 4379331859771413201}
   m_LocalEulerAnglesHint: {x: 0, y: -30, z: 0}
 --- !u!4 &8266280768478902040
 Transform:
@@ -17425,7 +17313,7 @@ GameObject:
   - component: {fileID: 8265870165144121809}
   - component: {fileID: 8817510225646172314}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: SpawnPoint_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18438,7 +18326,7 @@ MonoBehaviour:
   secondaryOcclusionStrength: 2.5
   sphericalSkylight: 1
   initChecker2: 1
-  material: {fileID: 337730462}
+  material: {fileID: 1735555773}
   attachedCamera: {fileID: 3606236095520960927}
   shadowCamTransform: {fileID: 1815445091}
   shadowCam: {fileID: 1815445090}
@@ -18545,13 +18433,13 @@ MonoBehaviour:
   voxelCameraGO: {fileID: 484082736}
   leftViewPoint: {fileID: 1402502039}
   topViewPoint: {fileID: 771570424}
-  voxelSpaceOrigin: {x: 0, y: 0, z: -0}
-  previousVoxelSpaceOrigin: {x: 0, y: 0, z: -0}
+  voxelSpaceOrigin: {x: 22.5, y: 22.5, z: 0}
+  previousVoxelSpaceOrigin: {x: 22.5, y: 22.5, z: 0}
   voxelSpaceOriginDelta: {x: 0, y: 0, z: 0}
   rotationFront: {x: 0, y: 0, z: 0, w: 1}
   rotationLeft: {x: 0, y: 0.7, z: 0, w: 0.7}
   rotationTop: {x: 0.7, y: 0, z: 0, w: 0.7}
-  voxelFlipFlop: 1
+  voxelFlipFlop: 0
   renderState: 0
   downscaleFactor: 2
   savedCam: {fileID: 0}
@@ -18788,11 +18676,8 @@ SceneRoots:
   - {fileID: 8279194867970067275}
   - {fileID: 7866650259419518452}
   - {fileID: 4379331859771413201}
-  - {fileID: 6815782753573925402}
-  - {fileID: 4573089445784755193}
-  - {fileID: 8265870165144121809}
   - {fileID: 1815445091}
   - {fileID: 484082739}
   - {fileID: 1402502040}
   - {fileID: 771570425}
-  - {fileID: 1915390089}
+  - {fileID: 1898748544}

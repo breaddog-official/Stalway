@@ -1,12 +1,11 @@
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using UnityEngine;
 
 namespace Breaddog.Network
 {
-    public class InterestOverrider : SerializedMonoBehaviour, IInterestOverrider
+    public class InterestOverrider : MonoBehaviour, IInterestOverrider
     {
-        [OdinSerialize] public Transform InterestTransform { get; }
+        public Transform interestTransform;
+        public Transform InterestTransform => interestTransform;
     }
 
     public interface IInterestOverrider

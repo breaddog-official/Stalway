@@ -1,42 +1,35 @@
 using System;
 using Mirror;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
+using Unity.Cinemachine;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class WeatherManager : NetworkBehaviour
 {
     [Header("Time Settings")]
-    [OdinSerialize, Unit(Units.Second, Units.Minute)] public float DayLength { get; protected set; }
-    [OdinSerialize, Unit(Units.Hour)] public float Sunrise { get; protected set; } = 6f;
-    [OdinSerialize, Unit(Units.Hour)] public float Moonrise { get; protected set; } = 18f;
-    [OdinSerialize, Unit(Units.Hour)] public float HoursInDay { get; protected set; } = 24f;
-    [PropertySpace]
-    [OdinSerialize] public DateTime StartDate { get; protected set; } = new DateTime(2050, 6, 1, 12, 0, 0);
+    public float DayLength;
+    public float Sunrise = 6f;
+    public float Moonrise = 18f;
+    public float HoursInDay = 24f;
+    [Space]
+    public DateTime CurrentDateTime = new DateTime(2050, 6, 1, 12, 0, 0);
 
     [Header("Light")]
-    [OdinSerialize] public Light Directional { get; protected set; }
-    [OdinSerialize] public float LightY { get; protected set; } = -150f;
+    public Light Directional;
+    public float LightY = -150f;
 
     [Header("Weather Settings")]
-    [OdinSerialize] public WeatherSettings[] Weathers { get; protected set; }
+    public WeatherSettings[] Weathers;
 
     [SyncVar(hook = nameof(OnDateChanged))]
     private double networkedTime; // текущее время в виде OADate (double)
     private const double secondsPerDay = 86400;
 
-    public DateTime CurrentDateTime { get; protected set; }
 
-
-
-    protected virtual void Awake()
-    {
-        CurrentDateTime = StartDate;
-    }
 
     protected virtual void Update()
     {
-        if (isServer) // сервер считает время
+        if (Application.isPlaying && isServer) // сервер считает время
         {
             double gameSecondsPerRealSecond = secondsPerDay / DayLength;
 
@@ -108,18 +101,18 @@ public class WeatherManager : NetworkBehaviour
 [Serializable]
 public class WeatherSettings
 {
-    [Header("Light"), MinMaxSlider(0f, 3f)]
-    [OdinSerialize] public Vector2 LightIntensity { get; protected set; }
-    [OdinSerialize] public Color LightColorDay { get; protected set; }
-    [OdinSerialize] public Color LightColorNight { get; protected set; }
-    [OdinSerialize] public float ShadowsStrength { get; protected set; } = 1f;
-    [Header("Skybox"), MinMaxSlider(0f, 3f)]
-    [OdinSerialize] public Vector2 SkyboxExposure { get; protected set; }
-    [OdinSerialize] public Color AmbientColorDay { get; protected set; }
-    [OdinSerialize] public Color AmbientColorNight { get; protected set; }
-    [OdinSerialize] public Material Skybox { get; protected set; }
-    [OdinSerialize] public bool ControlExposure { get; protected set; } = true;
-    [OdinSerialize] public bool ControlRotation { get; protected set; } = true;
+    [Header("Light"), MinMaxRangeSlider(0f, 3f)]
+    public Vector2 LightIntensity;
+    public Color LightColorDay;
+    public Color LightColorNight;
+    public float ShadowsStrength = 1f;
+    [Header("Skybox"), MinMaxRangeSlider(0f, 3f)]
+    public Vector2 SkyboxExposure;
+    public Color AmbientColorDay;
+    public Color AmbientColorNight;
+    public Material Skybox;
+    public bool ControlExposure = true;
+    public bool ControlRotation = true;
 
     public float LightIntensityDay => LightIntensity.y;
     public float LightIntensityNight => LightIntensity.x;

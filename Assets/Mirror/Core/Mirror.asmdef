@@ -2,7 +2,8 @@
     "name": "Mirror",
     "rootNamespace": "",
     "references": [
-        "GUID:325984b52e4128546bc7558552f8b1d2"
+        "GUID:325984b52e4128546bc7558552f8b1d2",
+        "GUID:776d03a35f1b52c4a9aed9f56d7b4229"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,32 +1,21 @@
-using Sirenix.OdinInspector;
 using System;
 using Unity.Burst;
 using UnityEngine;
 
 namespace Breaddog.Gameplay
 {
-    /// <summary>
-    /// ��������� �������, � ����� ����� ���������� ���������.
-    /// </summary>
-    public class SessionManager : SerializedMonoBehaviour
+    public class SessionManager : MonoBehaviour
     {
         [SerializeField] private Session defaultSession;
 
-        // ������ SessionManager �� ������ ���������, ������� �� ���������� ��� �������� ����������
         private PoolManager poolManager;
         private Session session;
 
-        /// <summary>
-        /// �������������� ��� ������� ���������
-        /// </summary>
         public void Initialize()
         {
 
         }
 
-        /// <summary>
-        /// �������������� ��� ������ � ��� ��������� � ��� ���������
-        /// </summary>
         public void InitializeSession(Session session = null)
         {
             session ??= defaultSession;

@@ -1,27 +1,23 @@
-using System;
 using Breaddog.Gameplay;
-using Breaddog.Extensions;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Breaddog.UI
 {
-    public class GameUI : SerializedMonoBehaviour
+    public class GameUI : MonoBehaviour
     {
         [Header("Health")]
-        [OdinSerialize] public TMP_Text HealthText { get; protected set; }
-        [OdinSerialize] public TMP_Text ArmorText { get; protected set; }
-        [OdinSerialize] public Image ArmorTierImage { get; protected set; }
-        [OdinSerialize] public Sprite[] ArmorTierSprites { get; protected set; }
+        public TMP_Text HealthText;
+        public TMP_Text ArmorText;
+        public Image ArmorTierImage;
+        public Sprite[] ArmorTierSprites;
 
 
         [Header("Weapons")]
-        //[OdinSerialize] public TMP_Text AmmoText { get; protected set; }
-        //[OdinSerialize] public TMP_Text AmmoBackpackText { get; protected set; }
-        [OdinSerialize] public Image[] WeaponsImages { get; protected set; }
+        //public TMP_Text AmmoText;
+        //public TMP_Text AmmoBackpackText;
+        public Image[] WeaponsImages;
 
 
         public Entity ObservingEntity => Entity.ObservingEntity;

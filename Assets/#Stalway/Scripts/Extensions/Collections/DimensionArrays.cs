@@ -8,9 +8,6 @@ using UnityEngine;
 
 namespace Breaddog.Extensions
 {
-    /// <summary>
-    /// ������ ������� ������ ������� ������ ��� ��������� (��� ��������� � ������� ��� �� ��������� � T[,])
-    /// </summary>
     [Serializable, BurstCompile(DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance)]
     public class Array2D<T> : IEnumerable<T>, IEnumerable, IReadOnlyCollection<T>, IReadOnlyArray2D<T>
     {
@@ -207,9 +204,6 @@ namespace Breaddog.Extensions
         T this[int x, int y] { get; }
     }
 
-    /// <summary>
-    /// ������ ������� ������ ������� ������ ��� ��������� (��� ��������� � ������� ��� �� ��������� � T[,,])
-    /// </summary>
     [Serializable, BurstCompile(DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance)]
     public class Array3D<T> : IEnumerable<T>, IEnumerable, IReadOnlyCollection<T>, IReadOnlyArray3D<T>
     {

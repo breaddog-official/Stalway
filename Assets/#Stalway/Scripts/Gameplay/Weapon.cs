@@ -1,12 +1,10 @@
 using Breaddog.Gameplay.StorageManagement;
-using Mirror;
-using Sirenix.Serialization;
 
 namespace Breaddog.Gameplay
 {
     public abstract class Weapon : ItemUser
     {
-        [OdinSerialize] public ItemWeapon Item { get; protected set; }
+        public ItemWeapon Item;
 
 
         public override void StartUsing() => StartFire();

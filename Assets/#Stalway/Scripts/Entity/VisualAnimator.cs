@@ -1,39 +1,46 @@
-using System;
-using Breaddog.Extensions;
 using Breaddog.Gameplay;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 using UnityEngine;
 
-public class VisualAnimator : SerializedMonoBehaviour
+public class VisualAnimator : MonoBehaviour
 {
     [Header("Links")]
-    [OdinSerialize] public Animator Animator { get; protected set; }
-    [OdinSerialize] public AbillityMovement AbillityMovement { get; protected set; }
-    [OdinSerialize] public AbillityCollisioner AbillityCollisioner { get; protected set; }
-    [OdinSerialize] public Transform RootTransform { get; protected set; }
-    //[OdinSerialize] public AbillityWeapon AbillityWeapon { get; protected set; }
+    public Animator Animator;
+    public AbillityMovement AbillityMovement;
+    public AbillityCollisioner AbillityCollisioner;
+    public Transform RootTransform;
 
     [Header("Parameters")]
-    [OdinSerialize] public string JumpName { get; protected set; } = "Jump";
-    [OdinSerialize] public string BodyPositionName { get; protected set; } = "BodyPosition";
-    [OdinSerialize] public string ShootName { get; protected set; } = "Shoot";
-    [OdinSerialize] public string VelocityXName { get; protected set; }
-    [OdinSerialize] public string VelocityZName { get; protected set; }
-    [OdinSerialize] public string TurnName { get; protected set; }
+    public string JumpName = "Jump";
+    public string BodyPositionName = "BodyPosition";
+    public string ShootName = "Shoot";
+    public string VelocityXName = "VelocityX";
+    public string VelocityZName = "VelocityZ";
+    public string TurnName = "Turn";
 
     [Header("Global")]
-    [OdinSerialize] public bool SimpleJump { get; protected set; } = true;
-    [PropertySpace]
-    [MinValue(0.001f)] // Avoiding division by zero
-    [OdinSerialize] public float TurnSmooth { get; protected set; } = 0.5f;
-    [OdinSerialize] public float TurnAngle { get; protected set; } = 20f;
-    [MinValue(0.001f)] // Avoiding division by zero
-    [OdinSerialize] public float SpeedSmooth { get; protected set; } = 0.5f;
-    [OdinSerialize] public float SpeedMultiplier { get; protected set; } = 1f;
+    public bool SimpleJump = true;
+    [Space]
+    [Min(0.001f)] // Avoiding division by zero
+    public float TurnSmooth = 0.5f;
+    public float TurnAngle = 20f;
+    [Min(0.001f)] // Avoiding division by zero
+    public float SpeedSmooth = 0.5f;
+    public float SpeedMultiplier = 1f;
+
+    [Header("Sounds")]
+    public bool PlayStepSounds = true;
+    public bool PlayStepExcludeLay = true;
+    public float StepPivotRange = 0.1f;
+    public AudioSource StepSource;
+
 
     private Vector3 curVelocity;
     private float lastTurn;
+    private bool leftStep;
+    private bool rightStep;
+
+
+
 
 
     protected virtual void Awake()
@@ -43,9 +50,6 @@ public class VisualAnimator : SerializedMonoBehaviour
 
     protected virtual void LateUpdate()
     {
-        //if (!AbillityMovement.AuthorityCorrect())
-        //    return;
-
         var jump = AbillityCollisioner.IsAir();
         var rawVelocity = RootTransform.InverseTransformVector(AbillityMovement.GetVelocity() * SpeedMultiplier);
         rawVelocity *= jump && SimpleJump ? 0f : 1f;
@@ -57,6 +61,8 @@ public class VisualAnimator : SerializedMonoBehaviour
 
         lastTurn = Mathf.Lerp(lastTurn, RootTransform.eulerAngles.y, Time.deltaTime / TurnSmooth);
 
+        CheckStep(false);
+        CheckStep(true);
 
         var requestedShoot = false;
         var bodyPos = (int)AbillityCollisioner.BodyPosition;
@@ -71,5 +77,24 @@ public class VisualAnimator : SerializedMonoBehaviour
         {
             Animator.SetTrigger(ShootName);
         }
+    }
+
+    // false - left leg
+    // true - right leg
+    protected virtual void CheckStep(bool leg)
+    {
+        var step = leg ? leftStep : rightStep;
+        var target = leg ? 0f : 1f;
+        var ground = Animator.pivotWeight > target - StepPivotRange && Animator.pivotWeight < target + StepPivotRange;
+
+        if (!step && ground && (PlayStepExcludeLay ? AbillityCollisioner.BodyPosition != BodyPosition.Lay : true))
+        {
+            StepSource.Play();
+        }
+
+        if (leg)
+            leftStep = ground;
+        else
+            rightStep = ground;
     }
 }

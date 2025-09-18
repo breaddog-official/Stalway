@@ -2,8 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using System;
-using Sirenix.Serialization;
-using Sirenix.OdinInspector;
 
 namespace Breaddog.Network
 {
@@ -26,24 +24,24 @@ namespace Breaddog.Network
             Alternating
         }
 
-        [field: Header("Interest Management")]
-        [field: SerializeField, Min(1)] public uint RebuildEveryFrames { get; protected set; } = 2;
-        [field: SerializeField, Min(0)] public float MaxDistance { get; protected set; } = 25f;
-        [field: SerializeField] public VisibleBehaviour DefaultBehaviour { get; protected set; }
-        [field: SerializeField] public VisibleBehaviour SameFractionBehaviour { get; protected set; }
-        [field: Header("Prediction")]
-        [field: SerializeField] public int HorizontalRaysCount { get; protected set; } = 64;
-        [field: SerializeField] public float HorizontalRaysSpace { get; protected set; } = 0.25f;
-        [field: SerializeField] public RaysDirection HorizontalRaysDirection { get; protected set; }
-        [field: SerializeField] public int VerticalRaysCount { get; protected set; } = 4;
-        [field: SerializeField] public float VerticalRaysSpace { get; protected set; } = 1f;
-        [field: SerializeField] public RaysDirection VerticalRaysDirection { get; protected set; }
-        [field: Space]
-        [field: SerializeField] public float MaxPredictionDistance { get; protected set; } = 3f;
-        [field: SerializeField] public LayerMask RaycastLayerMask { get; protected set; }
-        [field: Header("Debug")]
-        [field: SerializeField] public bool EnableLogging { get; protected set; }
-        [field: SerializeField] public bool DrawGizmos { get; protected set; }
+        [Header("Interest Management")]
+        [Min(1)] public uint RebuildEveryFrames = 2;
+        [Min(0)] public float MaxDistance = 25f;
+        public VisibleBehaviour DefaultBehaviour;
+        public VisibleBehaviour SameFractionBehaviour;
+        [Header("Prediction")]
+        public int HorizontalRaysCount = 64;
+        public float HorizontalRaysSpace = 0.25f;
+        public RaysDirection HorizontalRaysDirection;
+        public int VerticalRaysCount = 4;
+        public float VerticalRaysSpace = 1f;
+        public RaysDirection VerticalRaysDirection;
+        [Space]
+        public float MaxPredictionDistance = 3f;
+        public LayerMask RaycastLayerMask;
+        [Header("Debug")]
+        public bool EnableLogging;
+        public bool DrawGizmos;
 
         private const float GIZMOS_LENGTH = 5.0f;
 

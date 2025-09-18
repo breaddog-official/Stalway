@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using Sirenix.Serialization;
 using Mirror;
 using Breaddog.Extensions;
 using Breaddog.Network;
@@ -31,24 +30,24 @@ namespace Breaddog.Gameplay
     public class AbillityCollisioner : Abillity
     {
         [Header("Global")]
-        [OdinSerialize] public UpMode UpMode { get; private set; }
+        public UpMode UpMode;
 
         [Header("Ground Detection")]
-        [OdinSerialize] public float MaxGroundAngle { get; private set; }
-        [OdinSerialize] public float MaxSlopeAngle { get; private set; }
+        public float MaxGroundAngle;
+        public float MaxSlopeAngle;
 
         [Header("Body Position")]
-        [OdinSerialize] public float CheckTolerance { get; private set; }
-        [OdinSerialize] public LayerMask SolidMask { get; private set; }
-        [OdinSerialize] public Collider[] StandColliders { get; private set; }
-        [OdinSerialize] public Collider[] CrouchColliders { get; private set; }
-        [OdinSerialize] public Collider[] LayColliders { get; private set; }
+        public float CheckTolerance;
+        public LayerMask SolidMask;
+        public Collider[] StandColliders;
+        public Collider[] CrouchColliders;
+        public Collider[] LayColliders;
         [Header("Ignore Collision")]
-        [OdinSerialize] public IgnoreMode IgnoreMode { get; private set; }
+        public IgnoreMode IgnoreMode;
 
 
         [field: SyncVar]
-        public BodyPosition BodyPosition { get; private set; }
+        public BodyPosition BodyPosition { get; protected set; }
         public float TimeInAir { get; protected set; }
         public float HeightInAir { get; protected set; }
 

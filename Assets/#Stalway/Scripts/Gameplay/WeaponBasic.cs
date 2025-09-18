@@ -1,14 +1,13 @@
 using System.Linq;
 using Breaddog.Extensions;
 using Breaddog.Gameplay.StorageManagement;
-using Sirenix.Serialization;
 using UnityEngine;
 
 namespace Breaddog.Gameplay
 {
     public class WeaponBasic : Weapon
     {
-        [OdinSerialize] public Transform ShootPoint { get; protected set; }
+        public Transform ShootPoint;
 
         protected Collider[] colliders;
         protected RaycastHit[] hits;

@@ -1,9 +1,7 @@
-using System;
 using Breaddog.Gameplay;
 using Breaddog.Network;
 using Mirror;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
+using NaughtyAttributes;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -13,28 +11,29 @@ public enum CharacterCameraMode
     Third
 }
 
-public class VisualCamera : SerializedMonoBehaviour, IInterestOverrider
+public class VisualCamera : MonoBehaviour, IInterestOverrider
 {
     [Header("Links")]
-    [OdinSerialize] public NetworkIdentity Identity { get; protected set; }
-    [OdinSerialize] public AbillityCollisioner AbillityCollisioner { get; protected set; }
-    [PropertySpace]
-    [OdinSerialize] public CinemachineCamera FirstCamera { get; protected set; }
-    [OdinSerialize] public CinemachineCamera ThirdCamera { get; protected set; }
-    [OdinSerialize] public CinemachineImpulseSource GroundImpulse { get; protected set; }
-    [PropertySpace]
-    [OdinSerialize] public Transform TrackingTarget { get; protected set; }
-    [OdinSerialize] public Transform StandHead { get; protected set; }
-    [OdinSerialize] public Transform CrouchHead { get; protected set; }
-    [OdinSerialize] public Transform LayHead { get; protected set; }
-    [OdinSerialize] public float SwapHeadSpeed { get; protected set; } = 1f;
+    public NetworkIdentity Identity;
+    public AbillityCollisioner AbillityCollisioner;
+    [Space]
+    public CinemachineCamera FirstCamera;
+    public CinemachineCamera ThirdCamera;
+    public CinemachineImpulseSource GroundImpulse;
+    [Space]
+    public Transform TrackingTarget;
+    public Transform StandHead;
+    public Transform CrouchHead;
+    public Transform LayHead;
+    public float SwapHeadSpeed = 1f;
 
     [Header("Global")]
-    [OdinSerialize] public bool EnableOnlyOwned { get; protected set; }
-    [OdinSerialize] public bool CameraModeIsOwned { get; protected set; }
-    [OdinSerialize] public CharacterCameraMode CameraMode { get; protected set; } = CharacterCameraMode.First;
-    [OdinSerialize, MinMaxSlider(0f, 10f)] public Vector2 GroundImpulseAirHeight { get; protected set; } = new(0.5f, 2.0f);
-    [OdinSerialize, MinMaxSlider(0f, 2f)] public Vector2 GroundImpulseForce { get; protected set; } = new(0.2f, 2.0f);
+    public SteamAudio.SteamAudioSource[] Sources;
+    public bool EnableOnlyOwned;
+    public bool CameraModeIfLocalPlayer;
+    public CharacterCameraMode CameraMode = CharacterCameraMode.First;
+    [MinMaxSlider(0f, 10f)] public Vector2 GroundImpulseAirHeight = new(0.5f, 2.0f);
+    [MinMaxSlider(0f, 2f)] public Vector2 GroundImpulseForce = new(0.2f, 2.0f);
 
 
     public CinemachineCamera Camera => CameraMode == CharacterCameraMode.First ? FirstCamera : ThirdCamera;
@@ -57,11 +56,16 @@ public class VisualCamera : SerializedMonoBehaviour, IInterestOverrider
 
     protected virtual void LateUpdate()
     {
-        if (CameraModeIsOwned)
-            CameraMode = Identity.isOwned ? CharacterCameraMode.First : CharacterCameraMode.Third;
+        if (CameraModeIfLocalPlayer)
+            CameraMode = Identity.isLocalPlayer ? CharacterCameraMode.First : CharacterCameraMode.Third;
 
         FirstCamera.gameObject.SetActive(CameraMode == CharacterCameraMode.First && CamerasAuthority);
         ThirdCamera.gameObject.SetActive(CameraMode == CharacterCameraMode.Third && CamerasAuthority);
+
+        foreach (var source in Sources)
+        {
+            source.occlusion = Identity.isLocalPlayer;
+        }
 
         //Camera.Target.TrackingTarget = TrackingTarget;
         //Camera.Target.LookAtTarget = TrackingTarget;

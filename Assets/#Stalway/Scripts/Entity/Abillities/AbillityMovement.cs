@@ -1,9 +1,7 @@
 using Breaddog.Extensions;
 using Mirror;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
+using NaughtyAttributes;
 using System;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace Breaddog.Gameplay
@@ -18,60 +16,58 @@ namespace Breaddog.Gameplay
     public class AbillityMovement : Abillity
     {
         [Header("Links")]
-        [OdinSerialize] public PhysicsMaterial StayMaterial { get; protected set; }
-        [OdinSerialize] public PhysicsMaterial MoveMaterial { get; protected set; }
-        [OdinSerialize] public Transform Head { get; protected set; }
+        public PhysicsMaterial StayMaterial;
+        public PhysicsMaterial MoveMaterial;
+        public Transform Head;
+
         [Header("Network")]
-        [OdinSerialize] public MoveAuthority Authority { get; protected set; }
-        [OdinSerialize, ShowIf("@this.Authority == MoveAuthority.Prediction || this.Authority == MoveAuthority.Hybrid")] public PredictedRigidbody PredictedRb { get; protected set; }
-        [OdinSerialize, HideIf("@this.Authority == MoveAuthority.Prediction || this.Authority == MoveAuthority.Hybrid")] public Rigidbody CommonRb { get; protected set; }
-        [OdinSerialize, HideIf(nameof(Authority), MoveAuthority.Prediction)] public NetworkTransformHybrid TransformSync { get; protected set; }
-        [OdinSerialize, ShowIf(nameof(Authority), MoveAuthority.Hybrid)] public bool ClientSyncPosition { get; protected set; }
-        [OdinSerialize, ShowIf(nameof(Authority), MoveAuthority.Hybrid)] public bool ClientSyncRotation { get; protected set; }
+        public MoveAuthority Authority;
+        [ShowIf(nameof(PredictionOrHybryd))] public PredictedRigidbody PredictedRb;
+        [HideIf(nameof(PredictionOrHybryd))] public Rigidbody CommonRb;
+        [HideIf(nameof(Authority), MoveAuthority.Prediction)] public NetworkTransformHybrid TransformSync;
+        [ShowIf(nameof(Authority), MoveAuthority.Hybrid)] public bool ClientSyncPosition;
+        [ShowIf(nameof(Authority), MoveAuthority.Hybrid)] public bool ClientSyncRotation;
 
         [Header("Network: Compression")]
-        [OdinSerialize] public bool Compress { get; protected set; } = true;
-        [OdinSerialize, ShowIf(nameof(Compress))] public Vector2 MovePrecision { get; protected set; } = new(0.01f, 0.01f);
-        [OdinSerialize, ShowIf(nameof(Compress))] public Vector2 LookPrecision { get; protected set; } = new(0.01f, 0.01f);
-        [OdinSerialize, ShowIf(nameof(Compress))] public Vector3 VelocityPrecision { get; protected set; } = new(0.01f, 0.01f, 0.01f);
-        [OdinSerialize, ShowIf(nameof(Compress))] public Vector3 AngularVelocityPrecision { get; protected set; } = new(0.01f, 0.01f, 0.01f);
+        public bool Compress = true;
+        [ShowIf(nameof(Compress))] public Vector2 MovePrecision = new(0.01f, 0.01f);
+        [ShowIf(nameof(Compress))] public Vector2 LookPrecision = new(0.01f, 0.01f);
+        [ShowIf(nameof(Compress))] public Vector3 VelocityPrecision = new(0.01f, 0.01f, 0.01f);
+        [ShowIf(nameof(Compress))] public Vector3 AngularVelocityPrecision = new(0.01f, 0.01f, 0.01f);
 
         [Header("Move")]
-        [OdinSerialize] public Vector2 MinMoveInput { get; protected set; } = new(0.01f, 0.01f);
-        [OdinSerialize] public Vector2 MinLookInput { get; protected set; } = new(0.01f, 0.01f);
-        [PropertySpace]
-        [OdinSerialize] public AirMoveMode AirMove { get; protected set; }
-        [PropertyRange(0f, 1f), ShowIf(nameof(AirMove), AirMoveMode.Multiplied)]
-        [OdinSerialize] public float AirSpeedMultiplier { get; protected set; } = 0.1f;
-        [PropertyRange(0f, 1f), ShowIf(nameof(AirMove), AirMoveMode.Multiplied)]
-        [OdinSerialize] public float SlopeSpeedMultiplier { get; protected set; } = 0.1f;
+        public Vector2 MinMoveInput = new(0.01f, 0.01f);
+        public Vector2 MinLookInput = new(0.01f, 0.01f);
+        [Space]
+        public AirMoveMode AirMove;
+        [Range(0f, 1f), ShowIf(nameof(AirMove), AirMoveMode.Multiplied)] public float AirSpeedMultiplier = 0.1f;
+        [Range(0f, 1f), ShowIf(nameof(AirMove), AirMoveMode.Multiplied)] public float SlopeSpeedMultiplier = 0.1f;
 
 
         [Header("Forces")]
-        [OdinSerialize] public float AccelerationForce { get; protected set; } = 10f;
-        [OdinSerialize] public float AccelerationSmooth { get; protected set; } = 10f;
-        [OdinSerialize] public float GroundGravityForce { get; protected set; } = 1f;
-        [OdinSerialize] public float AirGravityForce { get; protected set; } = 5f;
-        [OdinSerialize] public float JumpForce { get; protected set; } = 5f;
+        public float AccelerationForce = 10f;
+        public float AccelerationSmooth = 10f;
+        public float GroundGravityForce = 1f;
+        public float AirGravityForce = 5f;
+        public float JumpForce = 5f;
 
 
         [Header("Speed Limits")]
-        [OdinSerialize, Unit(Units.MetersPerSecond)] public float MaxGroundSpeed { get; protected set; } = 5f;
-        [OdinSerialize, Unit(Units.MetersPerSecond)] public float MaxAirSpeed { get; protected set; } = 5f;
-
-        [Sirenix.OdinInspector.ShowInInspector, Unit(Units.MetersPerSecond, "UnitsPerSecond", DisplayAsString = true, ForceDisplayUnit = true)]
-        public float Speed => GetVelocity().magnitude; // Units per second like in CS2
+        public float MaxGroundSpeed = 5f;
+        public float MaxAirSpeed = 5f;
 
         [Header("Speed Limits: Multipliers")]
-        [OdinSerialize, PropertyRange(0f, 2f)] public float StandMultiplier { get; protected set; } = 1f;
-        [OdinSerialize, PropertyRange(0f, 2f)] public float CrouchMultiplier { get; protected set; } = 0.75f;
-        [OdinSerialize, PropertyRange(0f, 2f)] public float LayMultiplier { get; protected set; } = 0.5f;
+        [Range(0f, 2f)] public float StandMultiplier = 1f;
+        [Range(0f, 2f)] public float CrouchMultiplier = 0.75f;
+        [Range(0f, 2f)] public float LayMultiplier = 0.5f;
 
 
         [Header("Look")]
-        [OdinSerialize, PropertyRange(0f, 100f)] public float LookSensitivity { get; protected set; } = 10f;
-        [OdinSerialize, PropertyRange(0f, 90f), Unit(Units.Degree)] public float MinLookAngle { get; protected set; } = 90f;
-        [OdinSerialize, PropertyRange(0f, 90f), Unit(Units.Degree)] public float MaxLookAngle { get; protected set; } = 90f;
+        [Range(0f, 100f)] public float LookSensitivity = 10f;
+        [Range(0f, 90f)] public float MinLookAngle = 90f;
+        [Range(0f, 90f)] public float MaxLookAngle = 90f;
+
+        private bool PredictionOrHybryd => Authority == MoveAuthority.Prediction || Authority == MoveAuthority.Hybrid;
 
         public Vector2 MinMove => Vector2.Max(MinMoveInput, Compress ? MovePrecision : Vector2.zero);
         public Vector2 MinLook => Vector2.Max(MinLookInput, Compress ? LookPrecision : Vector2.zero);
