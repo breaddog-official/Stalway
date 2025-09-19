@@ -15,7 +15,7 @@ namespace Breaddog.UI
     {
         [Range(0, 20)]
         public uint UpdateFrames = 5;
-        public uint AsyncEveryItem = 2;
+        public bool UpdateAsync = true;
         public Transform CellsParent;
         public Transform ItemsParent;
         public InventoryDrawerCell CellPrefab;
@@ -83,6 +83,7 @@ namespace Breaddog.UI
                 while (cells.Count < placesCount)
                 {
                     var spawnedCell = Instantiate(CellPrefab, CellsParent);
+                    spawnedCell.gameObject.SetActive(true);
                     spawnedCell.Initialize();
                     cells.Add(spawnedCell);
                 }
@@ -106,7 +107,8 @@ namespace Breaddog.UI
                 while (items.Count < itemsCount)
                 {
                     var spawnedItem = Instantiate(ItemPrefab, ItemsParent);
-                    spawnedItem.Initialize(async: (itemI % AsyncEveryItem) == 0);
+                    spawnedItem.gameObject.SetActive(true);
+                    spawnedItem.Initialize(async: UpdateAsync);
                     items.Add(spawnedItem);
 
                     itemI++;
@@ -121,7 +123,10 @@ namespace Breaddog.UI
 
                 for (int i = 0; i < itemsCount; i++)
                 {
-                    await items[i].UpdateItem(storage.Items[i], token.Token);
+                    var update = items[i].UpdateItem(storage.Items[i], token.Token);
+                    if (UpdateAsync)
+                        await update;
+
                     UpdatePosition(items[i], storage);
                 }
             }
@@ -144,8 +149,8 @@ namespace Breaddog.UI
             Vector2 total = Vector2.zero;
             int count = 0;
 
-            for (int y = 0; y < rotatedSize.Item2; y++) // Height
-                for (int x = 0; x < rotatedSize.Item1; x++) // Width
+            for (int y = 0; y < rotatedSize.y; y++) // Height
+                for (int x = 0; x < rotatedSize.x; x++) // Width
                 {
                     var cell = GetCell(pos.x + x, pos.y + y, storage);
                     total += cell.Rect.anchoredPosition;

@@ -145,103 +145,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d915aba70dc0dff45ac8f161245d0d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 7651827060121716690}
-    - {fileID: -6738471775476888414}
-    - {fileID: 4955390194535503705}
-    - {fileID: 5149941503066737199}
-    - {fileID: 5461729967558227238}
-    - {fileID: 8512667114249185462}
-    - {fileID: 3147778768718266591}
-    - {fileID: 8603417084091940992}
-    - {fileID: 8111724637311685503}
-    - {fileID: 1892387496836597948}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: Identity
-      Entry: 10
-      Data: 0
-    - Name: AbillityCollisioner
-      Entry: 10
-      Data: 1
-    - Name: FirstCamera
-      Entry: 10
-      Data: 2
-    - Name: ThirdCamera
-      Entry: 10
-      Data: 3
-    - Name: GroundImpulse
-      Entry: 10
-      Data: 4
-    - Name: TrackingTarget
-      Entry: 10
-      Data: 5
-    - Name: StandHead
-      Entry: 10
-      Data: 6
-    - Name: CrouchHead
-      Entry: 10
-      Data: 7
-    - Name: LayHead
-      Entry: 10
-      Data: 8
-    - Name: SwapHeadSpeed
-      Entry: 4
-      Data: 10
-    - Name: Sources
-      Entry: 7
-      Data: 0|SteamAudio.SteamAudioSource[], SteamAudioUnity
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 10
-      Data: 9
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: EnableOnlyOwned
-      Entry: 5
-      Data: true
-    - Name: CameraModeIfLocalPlayer
-      Entry: 5
-      Data: true
-    - Name: CameraMode
-      Entry: 3
-      Data: 0
-    - Name: GroundImpulseAirHeight
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0.5
-    - Name: 
-      Entry: 4
-      Data: 4.437086
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: GroundImpulseForce
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 1.06622517
-    - Name: 
-      Entry: 8
-      Data: 
+  Identity: {fileID: 0}
+  AbillityCollisioner: {fileID: 0}
+  FirstCamera: {fileID: 0}
+  ThirdCamera: {fileID: 0}
+  GroundImpulse: {fileID: 0}
+  TrackingTarget: {fileID: 0}
+  StandHead: {fileID: 0}
+  CrouchHead: {fileID: 0}
+  LayHead: {fileID: 0}
+  SwapHeadSpeed: 1
+  Sources: []
+  EnableOnlyOwned: 0
+  CameraModeIfLocalPlayer: 0
+  CameraMode: 0
+  GroundImpulseAirHeight: {x: 0.5, y: 2}
+  GroundImpulseForce: {x: 0.2, y: 2}
 --- !u!1 &2130610585734064679
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,27 +236,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79233763d8299624abdd929e756b8185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: From
-      Entry: 6
-      Data: 
-    - Name: Position
-      Entry: 5
-      Data: true
-    - Name: Rotation
-      Entry: 5
-      Data: true
-    - Name: Scale
-      Entry: 5
-      Data: false
+  From: {fileID: 0}
+  Position: 1
+  Rotation: 1
+  Scale: 0
 --- !u!1 &3373587214775445960
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,15 +624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60384812b18206248ab11f16e5837341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
   syncDirection: 0
   syncMode: 0
   syncMethod: 0
@@ -772,47 +665,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f63ea2e505fd484193fb31c5c55ca73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: clientSnapshots
-      Entry: 7
-      Data: 0|System.Collections.Generic.SortedList`2[[System.Double, mscorlib],[Mirror.TransformSnapshot,
-        Mirror.Components]], System
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: serverSnapshots
-      Entry: 7
-      Data: 1|System.Collections.Generic.SortedList`2[[System.Double, mscorlib],[Mirror.TransformSnapshot,
-        Mirror.Components]], System
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
   syncDirection: 1
   syncMode: 0
   syncMethod: 1
   syncInterval: 0.016666668
   target: {fileID: 2432536053179171602}
-  updateMethod: 0
+  updateMethod: 1
   syncPosition: 1
   syncRotation: 1
   syncScale: 0
@@ -940,18 +798,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 503e56644f2ec6d4f9e980eba855a6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RigidbodyAdvanced
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: RigidbodyQuality
-      Entry: 3
-      Data: 3
+  RigidbodyQuality: 3
 --- !u!114 &-1432268717200476750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -964,15 +811,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d4dee5d74e11d4b8ef24a2eaeb9136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
   syncDirection: 0
   syncMode: 0
   syncMethod: 0
@@ -989,15 +827,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15aff80b33fa40d499fca9cf5bff74a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
   syncDirection: 0
   syncMode: 0
   syncMethod: 0
@@ -1014,180 +843,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b7ba5abfe1ea114aa90db0e267aa763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 13400000, guid: a242ef874266eca42b6f3f8c72e3b3c7, type: 2}
-    - {fileID: 13400000, guid: 13ffcb0d4b61b2a4fb57fba332bf9dc1, type: 2}
-    - {fileID: 8512667114249185462}
-    - {fileID: 3917063636281673677}
-    - {fileID: 2128398592785084218}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: StayMaterial
-      Entry: 10
-      Data: 0
-    - Name: MoveMaterial
-      Entry: 10
-      Data: 1
-    - Name: Head
-      Entry: 10
-      Data: 2
-    - Name: Authority
-      Entry: 3
-      Data: 0
-    - Name: PredictedRb
-      Entry: 6
-      Data: 
-    - Name: CommonRb
-      Entry: 10
-      Data: 3
-    - Name: TransformSync
-      Entry: 10
-      Data: 4
-    - Name: ClientSyncPosition
-      Entry: 5
-      Data: false
-    - Name: ClientSyncRotation
-      Entry: 5
-      Data: false
-    - Name: Compress
-      Entry: 5
-      Data: true
-    - Name: MovePrecision
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0.01
-    - Name: 
-      Entry: 4
-      Data: 0.01
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: LookPrecision
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0.001
-    - Name: 
-      Entry: 4
-      Data: 0.001
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: VelocityPrecision
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0.01
-    - Name: 
-      Entry: 4
-      Data: 0.01
-    - Name: 
-      Entry: 4
-      Data: 0.01
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: AngularVelocityPrecision
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0.01
-    - Name: 
-      Entry: 4
-      Data: 0.01
-    - Name: 
-      Entry: 4
-      Data: 0.01
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: MinMoveInput
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0.01
-    - Name: 
-      Entry: 4
-      Data: 0.01
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: MinLookInput
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0.001
-    - Name: 
-      Entry: 4
-      Data: 0.001
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: AirMove
-      Entry: 3
-      Data: 1
-    - Name: AirSpeedMultiplier
-      Entry: 4
-      Data: 0.4
-    - Name: SlopeSpeedMultiplier
-      Entry: 4
-      Data: 0.01
-    - Name: AccelerationForce
-      Entry: 4
-      Data: 250
-    - Name: AccelerationSmooth
-      Entry: 4
-      Data: 0.1
-    - Name: GroundGravityForce
-      Entry: 4
-      Data: 90
-    - Name: AirGravityForce
-      Entry: 4
-      Data: 13
-    - Name: JumpForce
-      Entry: 4
-      Data: 9
-    - Name: MaxGroundSpeed
-      Entry: 4
-      Data: 3
-    - Name: MaxAirSpeed
-      Entry: 4
-      Data: 3
-    - Name: StandMultiplier
-      Entry: 4
-      Data: 1
-    - Name: CrouchMultiplier
-      Entry: 4
-      Data: 0.4
-    - Name: LayMultiplier
-      Entry: 4
-      Data: 0.2
-    - Name: LookSensitivity
-      Entry: 4
-      Data: 5
-    - Name: MinLookAngle
-      Entry: 4
-      Data: 60
-    - Name: MaxLookAngle
-      Entry: 4
-      Data: 90
   syncDirection: 1
   syncMode: 0
   syncMethod: 1
   syncInterval: 0.01666667
+  StayMaterial: {fileID: 13400000, guid: a242ef874266eca42b6f3f8c72e3b3c7, type: 2}
+  MoveMaterial: {fileID: 13400000, guid: 13ffcb0d4b61b2a4fb57fba332bf9dc1, type: 2}
+  Head: {fileID: 8512667114249185462}
+  Authority: 0
+  PredictedRb: {fileID: 0}
+  CommonRb: {fileID: 3917063636281673677}
+  TransformSync: {fileID: 2128398592785084218}
+  ClientSyncPosition: 0
+  ClientSyncRotation: 0
+  Compress: 1
+  MovePrecision: {x: 0.01, y: 0.01}
+  LookPrecision: {x: 0.01, y: 0.01}
+  VelocityPrecision: {x: 0.01, y: 0.01, z: 0.01}
+  AngularVelocityPrecision: {x: 0.01, y: 0.01, z: 0.01}
+  MinMoveInput: {x: 0.01, y: 0.01}
+  MinLookInput: {x: 0.01, y: 0.01}
+  AirMove: 1
+  AirSpeedMultiplier: 0.4
+  SlopeSpeedMultiplier: 0.01
+  AccelerationForce: 250
+  AccelerationSmooth: 10
+  GroundGravityForce: 90
+  AirGravityForce: 13
+  JumpForce: 9
+  MaxGroundSpeed: 3
+  MaxAirSpeed: 3
+  StandMultiplier: 1
+  CrouchMultiplier: 0.5
+  LayMultiplier: 0.2
+  LookSensitivity: 7
+  MinLookAngle: 90
+  MaxLookAngle: 90
 --- !u!114 &-6738471775476888414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1200,91 +891,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb5415d593de1743a3e161175d1a76a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 3969586866547657116}
-    - {fileID: 8722538175834229145}
-    - {fileID: 6780543342024150843}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: UpMode
-      Entry: 3
-      Data: 0
-    - Name: MaxGroundAngle
-      Entry: 4
-      Data: 45
-    - Name: MaxSlopeAngle
-      Entry: 4
-      Data: 80
-    - Name: CheckTolerance
-      Entry: 4
-      Data: 0.1
-    - Name: SolidMask
-      Entry: 7
-      Data: UnityEngine.LayerMask, UnityEngine.CoreModule
-    - Name: 
-      Entry: 3
-      Data: 64
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: StandColliders
-      Entry: 7
-      Data: 0|UnityEngine.Collider[], UnityEngine.PhysicsModule
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: CrouchColliders
-      Entry: 7
-      Data: 1|UnityEngine.Collider[], UnityEngine.PhysicsModule
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: LayColliders
-      Entry: 7
-      Data: 2|UnityEngine.Collider[], UnityEngine.PhysicsModule
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 10
-      Data: 2
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: IgnoreMode
-      Entry: 3
-      Data: 1
   syncDirection: 0
   syncMode: 0
   syncMethod: 0
   syncInterval: 0
+  UpMode: 0
+  MaxGroundAngle: 30
+  MaxSlopeAngle: 80
+  CheckTolerance: 0.1
+  SolidMask:
+    serializedVersion: 2
+    m_Bits: 192
+  StandColliders:
+  - {fileID: 3969586866547657116}
+  CrouchColliders:
+  - {fileID: 8722538175834229145}
+  LayColliders:
+  - {fileID: 6780543342024150843}
+  IgnoreMode: 1
 --- !u!114 &-7193974891766788558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1297,34 +921,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f5dde4c356e08468d512e427bfbe75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: Health
-      Entry: 4
-      Data: 100
-    - Name: HealthRange
-      Entry: 7
-      Data: UnityEngine.Vector2, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 100
-    - Name: 
-      Entry: 8
-      Data: 
   syncDirection: 0
   syncMode: 0
   syncMethod: 0
   syncInterval: 0
+  Health: 100
+  HealthRange: {x: 0, y: 100}
 --- !u!114 &-3395518569116787974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1337,135 +939,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f995756b69eab824f834d82d560c36de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: BackpackSize
-      Entry: 7
-      Data: UnityEngine.Vector2Int, UnityEngine.CoreModule
-    - Name: 
-      Entry: 3
-      Data: 10
-    - Name: 
-      Entry: 3
-      Data: 6
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: Backpack
-      Entry: 7
-      Data: 0|Breaddog.Network.SyncStorage, Assembly-CSharp
-    - Name: OnDirty
-      Entry: 6
-      Data: 
-    - Name: IsRecording
-      Entry: 7
-      Data: 1|System.Func`1[[System.Boolean, mscorlib]], mscorlib
-    - Name: target
-      Entry: 7
-      Data: 2|Mirror.SyncObject+<>c, Mirror
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: declaringType
-      Entry: 7
-      Data: 3|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: Mirror.SyncObject+<>c, Mirror
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: methodName
-      Entry: 1
-      Data: <.ctor>b__9_0
-    - Name: delegateType
-      Entry: 7
-      Data: 4|System.RuntimeType, mscorlib
-    - Name: 
-      Entry: 1
-      Data: System.Func`1[[System.Boolean, mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: signature
-      Entry: 7
-      Data: 5|System.Type[], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: IsWritable
-      Entry: 7
-      Data: 6|System.Func`1[[System.Boolean, mscorlib]], mscorlib
-    - Name: target
-      Entry: 9
-      Data: 2
-    - Name: declaringType
-      Entry: 9
-      Data: 3
-    - Name: methodName
-      Entry: 1
-      Data: <.ctor>b__9_1
-    - Name: delegateType
-      Entry: 9
-      Data: 4
-    - Name: signature
-      Entry: 7
-      Data: 7|System.Type[], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: OnPlace
-      Entry: 6
-      Data: 
-    - Name: OnRemove
-      Entry: 6
-      Data: 
-    - Name: OnReplace
-      Entry: 6
-      Data: 
-    - Name: OnResize
-      Entry: 6
-      Data: 
-    - Name: OnClear
-      Entry: 6
-      Data: 
-    - Name: OnChange
-      Entry: 6
-      Data: 
-    - Name: storage
-      Entry: 7
-      Data: 8|Breaddog.Gameplay.StorageManagement.Storage, Assembly-CSharp
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
   syncDirection: 0
   syncMode: 1
   syncMethod: 0
@@ -1482,23 +955,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23645f717412613448eaa312576b0916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Breaddog.Gameplay.AbillityAmmunition
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 2018221633401667510}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: ItemParent
-      Entry: 10
-      Data: 0
   syncDirection: 0
   syncMode: 0
   syncMethod: 0
   syncInterval: 0
+  ItemParent: {fileID: 2018221633401667510}
 --- !u!114 &5070021109857440306
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1511,26 +972,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c94705799153b438e3244dd112f2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Breaddog.Gameplay.AbillityFlashlight
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 4088989793717268438}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: Enabled
-      Entry: 5
-      Data: false
-    - Name: Flashlight
-      Entry: 10
-      Data: 0
   syncDirection: 0
   syncMode: 0
   syncMethod: 0
   syncInterval: 0
+  Enabled: 0
+  Flashlight: {fileID: 4088989793717268438}
 --- !u!1 &7664134577797635664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,77 +1025,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a0c8aca25b7de4388e1349d193b0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 1306416579016810404}
-    - {fileID: 6388926755160078079}
-    - {fileID: -6738471775476888414}
-    - {fileID: 2432536053179171602}
-    - {fileID: 4326228386825077847}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: Animator
-      Entry: 10
-      Data: 0
-    - Name: AbillityMovement
-      Entry: 10
-      Data: 1
-    - Name: AbillityCollisioner
-      Entry: 10
-      Data: 2
-    - Name: RootTransform
-      Entry: 10
-      Data: 3
-    - Name: JumpName
-      Entry: 1
-      Data: Jump
-    - Name: BodyPositionName
-      Entry: 1
-      Data: BodyPosition
-    - Name: ShootName
-      Entry: 1
-      Data: Shoot
-    - Name: VelocityXName
-      Entry: 1
-      Data: VelocityX
-    - Name: VelocityZName
-      Entry: 1
-      Data: VelocityZ
-    - Name: TurnName
-      Entry: 1
-      Data: Turn
-    - Name: SimpleJump
-      Entry: 5
-      Data: true
-    - Name: TurnSmooth
-      Entry: 4
-      Data: 0.1
-    - Name: TurnAngle
-      Entry: 4
-      Data: 20
-    - Name: SpeedSmooth
-      Entry: 4
-      Data: 0.1
-    - Name: SpeedMultiplier
-      Entry: 4
-      Data: 0.7
-    - Name: PlayStepSounds
-      Entry: 5
-      Data: true
-    - Name: PlayStepExcludeLay
-      Entry: 5
-      Data: true
-    - Name: StepPivotRange
-      Entry: 4
-      Data: 0.1
-    - Name: StepSource
-      Entry: 10
-      Data: 4
+  Animator: {fileID: 0}
+  AbillityMovement: {fileID: 0}
+  AbillityCollisioner: {fileID: 0}
+  RootTransform: {fileID: 0}
+  JumpName: Jump
+  BodyPositionName: BodyPosition
+  ShootName: Shoot
+  VelocityXName: VelocityX
+  VelocityZName: VelocityZ
+  TurnName: Turn
+  SimpleJump: 1
+  TurnSmooth: 0.5
+  TurnAngle: 20
+  SpeedSmooth: 0.5
+  SpeedMultiplier: 1
+  PlayStepSounds: 1
+  PlayStepExcludeLay: 1
+  StepPivotRange: 0.1
+  StepSource: {fileID: 0}
 --- !u!82 &4326228386825077847
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2017,45 +1412,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cec15b53ad8d384f9257a34ec643f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 8162061002933554448}
-    - {fileID: 5730910354043040189}
-    - {fileID: 1920685996729948487}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: VisualCamera
-      Entry: 10
-      Data: 0
-    - Name: AlwaysShowLegs
-      Entry: 5
-      Data: true
-    - Name: DefaultModel
-      Entry: 10
-      Data: 1
-    - Name: FirstPersonModel
-      Entry: 10
-      Data: 2
-    - Name: FirstPersonOffset
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 4
-      Data: -0.25
-    - Name: 
-      Entry: 8
-      Data: 
+  VisualCamera: {fileID: 0}
+  AlwaysShowLegs: 1
+  DefaultModel: {fileID: 0}
+  FirstPersonModel: {fileID: 0}
+  FirstPersonOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &8908667493904944132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2450,11 +1811,6 @@ PrefabInstance:
 --- !u!137 &537379447308240556 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -4305757217642142567, guid: 42d1fff3da9e6d440bcf7a30e1bb9689, type: 3}
-  m_PrefabInstance: {fileID: 4849188626094547509}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1306416579016810404 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 42d1fff3da9e6d440bcf7a30e1bb9689, type: 3}
   m_PrefabInstance: {fileID: 4849188626094547509}
   m_PrefabAsset: {fileID: 0}
 --- !u!137 &1695991300196529346 stripped

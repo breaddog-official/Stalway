@@ -57,12 +57,12 @@ namespace Breaddog.Extensions
             return result;
         }
 
-        public static (float, float) RotatedSize(this Array2D<bool> shape, Rotation4 rotation)
+        public static Vector2 RotatedSize(this Array2D<bool> shape, Rotation4 rotation)
         {
             if (rotation == Rotation4.Up || rotation == Rotation4.Down)
-                return (shape.Width, shape.Height);
+                return new(shape.Width, shape.Height);
             else
-                return (shape.Height, shape.Width);
+                return new(shape.Height, shape.Width);
         }
 
         #endregion
