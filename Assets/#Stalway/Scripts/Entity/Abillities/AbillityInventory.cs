@@ -6,7 +6,7 @@ namespace Breaddog.Gameplay
     public class AbillityInventory : Abillity
     {
         [Header("Backpack")]
-        public Vector2Int BackpackSize { get; private set; }
+        public Vector2Int BackpackSize;
 
         public readonly SyncStorage Backpack = new();
 

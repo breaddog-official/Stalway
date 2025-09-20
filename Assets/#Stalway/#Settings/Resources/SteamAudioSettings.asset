@@ -20,7 +20,7 @@ MonoBehaviour:
   hrtfNormalizationType: 0
   SOFAFiles: []
   defaultMaterial: {fileID: 11400000, guid: a086f686223eed942816c70be67841b0, type: 2}
-  sceneType: 3
+  sceneType: 0
   layerMask:
     serializedVersion: 2
     m_Bits: 192
@@ -50,7 +50,7 @@ MonoBehaviour:
   reflectionEffectType: 0
   hybridReverbTransitionTime: 1
   hybridReverbOverlapPercent: 25
-  deviceType: 2
+  deviceType: 0
   maxReservedComputeUnits: 8
   fractionComputeUnitsForIRUpdate: 0.5
   bakingBatchSize: 8

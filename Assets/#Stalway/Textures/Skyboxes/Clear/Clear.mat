@@ -72,8 +72,8 @@ Material:
     - _SunDisk: 0
     - _SunSize: 0.109
     - _SunSizeConvergence: 2.29
-    - _VOffset: -0.3
-    - _VScale: 3
+    - _VOffset: 0.4
+    - _VScale: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _GroundColor: {r: 0.36899996, g: 0.34899998, b: 0.34099993, a: 1}

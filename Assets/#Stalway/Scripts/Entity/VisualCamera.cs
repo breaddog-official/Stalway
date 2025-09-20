@@ -64,7 +64,7 @@ public class VisualCamera : MonoBehaviour, IInterestOverrider
 
         foreach (var source in Sources)
         {
-            source.occlusion = Identity.isLocalPlayer;
+            source.occlusion = !Identity.isLocalPlayer;
         }
 
         //Camera.Target.TrackingTarget = TrackingTarget;

@@ -145,22 +145,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d915aba70dc0dff45ac8f161245d0d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Identity: {fileID: 0}
-  AbillityCollisioner: {fileID: 0}
-  FirstCamera: {fileID: 0}
-  ThirdCamera: {fileID: 0}
-  GroundImpulse: {fileID: 0}
-  TrackingTarget: {fileID: 0}
-  StandHead: {fileID: 0}
-  CrouchHead: {fileID: 0}
-  LayHead: {fileID: 0}
-  SwapHeadSpeed: 1
-  Sources: []
-  EnableOnlyOwned: 0
-  CameraModeIfLocalPlayer: 0
+  Identity: {fileID: 7651827060121716690}
+  AbillityCollisioner: {fileID: -6738471775476888414}
+  FirstCamera: {fileID: 4955390194535503705}
+  ThirdCamera: {fileID: 5149941503066737199}
+  GroundImpulse: {fileID: 5461729967558227238}
+  TrackingTarget: {fileID: 8512667114249185462}
+  StandHead: {fileID: 3147778768718266591}
+  CrouchHead: {fileID: 8603417084091940992}
+  LayHead: {fileID: 8111724637311685503}
+  SwapHeadSpeed: 10
+  Sources:
+  - {fileID: 1892387496836597948}
+  EnableOnlyOwned: 1
+  CameraModeIfLocalPlayer: 1
   CameraMode: 0
   GroundImpulseAirHeight: {x: 0.5, y: 2}
-  GroundImpulseForce: {x: 0.2, y: 2}
+  GroundImpulseForce: {x: 0, y: 1}
 --- !u!1 &2130610585734064679
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,54 +193,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3840561051281274855}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2247781019729173317
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9027636954718570512}
-  - component: {fileID: 2165919498236104170}
-  m_Layer: 7
-  m_Name: Weapon
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9027636954718570512
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2247781019729173317}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.6704439, y: 0.12949508, z: 0.2860104, w: -0.6722604}
-  m_LocalPosition: {x: 0.42313385, y: 0.32719803, z: 0.06330395}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2432536053179171602}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2165919498236104170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2247781019729173317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79233763d8299624abdd929e756b8185, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  From: {fileID: 0}
-  Position: 1
-  Rotation: 1
-  Scale: 0
 --- !u!1 &3373587214775445960
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +545,6 @@ Transform:
   - {fileID: 4967561176491851069}
   - {fileID: 3840561051281274855}
   - {fileID: 6861598074669368380}
-  - {fileID: 9027636954718570512}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7651827060121716690
@@ -876,8 +828,8 @@ MonoBehaviour:
   StandMultiplier: 1
   CrouchMultiplier: 0.5
   LayMultiplier: 0.2
-  LookSensitivity: 7
-  MinLookAngle: 90
+  LookSensitivity: 5
+  MinLookAngle: 70
   MaxLookAngle: 90
 --- !u!114 &-6738471775476888414
 MonoBehaviour:
@@ -901,7 +853,7 @@ MonoBehaviour:
   CheckTolerance: 0.1
   SolidMask:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 64
   StandColliders:
   - {fileID: 3969586866547657116}
   CrouchColliders:
@@ -943,6 +895,7 @@ MonoBehaviour:
   syncMode: 1
   syncMethod: 0
   syncInterval: 0
+  BackpackSize: {x: 8, y: 5}
 --- !u!114 &415579381986083180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1025,10 +978,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a0c8aca25b7de4388e1349d193b0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 0}
-  AbillityMovement: {fileID: 0}
-  AbillityCollisioner: {fileID: 0}
-  RootTransform: {fileID: 0}
+  Animator: {fileID: 1306416579016810404}
+  AbillityMovement: {fileID: 6388926755160078079}
+  AbillityCollisioner: {fileID: -6738471775476888414}
+  RootTransform: {fileID: 2432536053179171602}
   JumpName: Jump
   BodyPositionName: BodyPosition
   ShootName: Shoot
@@ -1036,14 +989,14 @@ MonoBehaviour:
   VelocityZName: VelocityZ
   TurnName: Turn
   SimpleJump: 1
-  TurnSmooth: 0.5
-  TurnAngle: 20
-  SpeedSmooth: 0.5
-  SpeedMultiplier: 1
+  TurnSmooth: 0.15
+  TurnAngle: 45
+  SpeedSmooth: 0.05
+  SpeedMultiplier: 0.75
   PlayStepSounds: 1
   PlayStepExcludeLay: 1
   StepPivotRange: 0.1
-  StepSource: {fileID: 0}
+  StepSource: {fileID: 4326228386825077847}
 --- !u!82 &4326228386825077847
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1171,7 +1124,7 @@ MonoBehaviour:
   directivityValue: 1
   occlusion: 1
   occlusionInput: 0
-  occlusionType: 1
+  occlusionType: 0
   occlusionRadius: 0.75
   occlusionSamples: 4
   occlusionValue: 1
@@ -1183,7 +1136,7 @@ MonoBehaviour:
   transmissionHigh: 1
   maxTransmissionSurfaces: 1
   directMixLevel: 1
-  reflections: 0
+  reflections: 1
   reflectionsType: 0
   useDistanceCurveForReflections: 0
   currentBakedSource: {fileID: 0}
@@ -1195,7 +1148,7 @@ MonoBehaviour:
   hybridReverbEQHigh: 1
   hybridReverbDelay: 0
   applyHRTFToReflections: 1
-  reflectionsMixLevel: 1
+  reflectionsMixLevel: 0.5
   pathing: 0
   pathingProbeBatch: {fileID: 0}
   pathValidation: 1
@@ -1412,11 +1365,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cec15b53ad8d384f9257a34ec643f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VisualCamera: {fileID: 0}
+  VisualCamera: {fileID: 8162061002933554448}
   AlwaysShowLegs: 1
-  DefaultModel: {fileID: 0}
-  FirstPersonModel: {fileID: 0}
-  FirstPersonOffset: {x: 0, y: 0, z: 0}
+  DefaultModel: {fileID: 5730910354043040189}
+  FirstPersonModel: {fileID: 1920685996729948487}
+  FirstPersonOffset: {x: 0, y: 0, z: -0.4}
 --- !u!1 &8908667493904944132
 GameObject:
   m_ObjectHideFlags: 0
@@ -1811,6 +1764,11 @@ PrefabInstance:
 --- !u!137 &537379447308240556 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: -4305757217642142567, guid: 42d1fff3da9e6d440bcf7a30e1bb9689, type: 3}
+  m_PrefabInstance: {fileID: 4849188626094547509}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1306416579016810404 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 42d1fff3da9e6d440bcf7a30e1bb9689, type: 3}
   m_PrefabInstance: {fileID: 4849188626094547509}
   m_PrefabAsset: {fileID: 0}
 --- !u!137 &1695991300196529346 stripped
