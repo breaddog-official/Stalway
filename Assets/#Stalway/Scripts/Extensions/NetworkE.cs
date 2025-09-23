@@ -1,4 +1,5 @@
 using Breaddog.Gameplay.StorageManagement;
+using Breaddog.SaveManagement;
 using Cysharp.Threading.Tasks;
 using Mirror;
 using Newtonsoft.Json;
@@ -128,6 +129,8 @@ namespace Breaddog.Extensions
 
         #region Write & Read
 
+        public static readonly IStringSerializer NetworkSerializer = new SerializerJson();
+
         // while SyncList<T> is recommended for NetworkBehaviours,
         // structs may have .List<T> members which weaver needs to be able to
         // fully serialize for NetworkMessages etc.
@@ -224,12 +227,12 @@ namespace Breaddog.Extensions
 
         public static void WriteItem(this NetworkWriter writer, Item item)
         {
-            writer.WriteString(JsonConvert.SerializeObject(item));
+            writer.WriteString(NetworkSerializer.SerializeType<Item>(item));
         }
 
         public static Item ReadItem(this NetworkReader reader)
         {
-            return JsonConvert.DeserializeObject<Item>(reader.ReadString());
+            return NetworkSerializer.DeserializeType<Item>(reader.ReadString());
         }
 
 

@@ -14,6 +14,9 @@ namespace Breaddog.AssetsManagement
 
         public override T GetDedicatedValue<T>(string absolutePath)
         {
+            if (loadedClips.TryGetValue(absolutePath, out var loadedClip))
+                return (T)Convert.ChangeType(loadedClip, typeof(T));
+
             AudioClip clip = null;
             string uri = "file://" + absolutePath;
 
@@ -43,6 +46,9 @@ namespace Breaddog.AssetsManagement
 
         public override async UniTask<T> GetDedicatedValueAsync<T>(string absolutePath, CancellationToken token = default)
         {
+            if (loadedClips.TryGetValue(absolutePath, out var loadedClip))
+                return (T)Convert.ChangeType(loadedClip, typeof(T));
+
             AudioClip clip = null;
             string uri = "file://" + absolutePath;
 

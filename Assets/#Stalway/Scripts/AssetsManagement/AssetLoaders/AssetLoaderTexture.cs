@@ -10,12 +10,17 @@ namespace Breaddog.AssetsManagement
     [CreateAssetMenu(fileName = "TextureAssetLoader", menuName = "Stalway/Asset Loaders/Texture")]
     public class AssetLoaderTexture : AssetLoaderAddressables
     {
-
         private readonly Dictionary<string, Texture2D> loadedTextures = new();
         private readonly Dictionary<string, Sprite> loadedSprites = new();
 
         public override T GetDedicatedValue<T>(string absolutePath)
         {
+            if (loadedTextures.TryGetValue(absolutePath, out var loadedTex))
+                return (T)Convert.ChangeType(loadedTex, typeof(T));
+
+            else if (typeof(T) == typeof(Sprite) && loadedSprites.TryGetValue(absolutePath, out var loadedSprite))
+                return (T)Convert.ChangeType(loadedSprite, typeof(T));
+
             Texture2D tex = null;
             string uri = "file://" + absolutePath;
 
@@ -45,6 +50,12 @@ namespace Breaddog.AssetsManagement
 
         public override async UniTask<T> GetDedicatedValueAsync<T>(string absolutePath, CancellationToken token = default)
         {
+            if (loadedTextures.TryGetValue(absolutePath, out var loadedTex))
+                return (T)Convert.ChangeType(loadedTex, typeof(T));
+
+            else if (typeof(T) == typeof(Sprite) && loadedSprites.TryGetValue(absolutePath, out var loadedSprite))
+                return (T)Convert.ChangeType(loadedSprite, typeof(T));
+
             Texture2D tex = null;
             string uri = "file://" + absolutePath;
 

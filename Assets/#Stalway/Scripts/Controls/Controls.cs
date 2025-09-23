@@ -203,6 +203,24 @@ namespace Breaddog.Input
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""3b1c3dfa-d085-4708-ad1f-a8768793779b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Map"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b0491e3-a7ca-426b-851c-e068c9253d21"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Menu"",
                     ""type"": ""Button"",
                     ""id"": ""3c070c71-ffee-49c7-81db-b15c6bc8ae68"",
@@ -639,6 +657,50 @@ namespace Breaddog.Input
                     ""action"": ""Flashlight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""22914b2b-ed76-45af-ad19-8e950ad22205"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Pointer"",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ab9b283-f4c4-4b2e-a9fa-65ff3b31985b"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6fdb15b-e580-4ea1-ac05-3f25b3bb3669"",
+                    ""path"": ""<Keyboard>/alt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Pointer"",
+                    ""action"": ""Map"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""efc4ce08-86b5-47df-93af-49b7a742b8b0"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Map"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -714,6 +776,15 @@ namespace Breaddog.Input
                     ""type"": ""PassThrough"",
                     ""id"": ""3a829219-610d-411d-8455-fdbac8b65024"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Debug"",
+                    ""type"": ""Button"",
+                    ""id"": ""6b5631fc-8e53-4a6c-98f5-d7652cec70ae"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -1116,6 +1187,28 @@ namespace Breaddog.Input
                 },
                 {
                     ""name"": """",
+                    ""id"": ""08111e0a-c8e8-421b-b913-01b6b4fdc545"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Pointer"",
+                    ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8f1c37ad-7344-4511-8d23-ea5cabc8606a"",
+                    ""path"": ""<Keyboard>/alt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Pointer"",
+                    ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""5b90eea4-6548-4431-8b0e-6bc939d6bf18"",
                     ""path"": ""*/{Menu}"",
                     ""interactions"": """",
@@ -1124,6 +1217,116 @@ namespace Breaddog.Input
                     ""action"": ""Quit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6c5eae95-3490-4d9d-b7b5-bbeb2a749384"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ed296791-a05e-4340-9293-a0516ea4aae2"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""DEB"",
+                    ""id"": ""ef60cf80-38ff-4785-ab3a-71f91cc64172"",
+                    ""path"": ""TwoModifiers(modifiersOrder=2)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Debug"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""b1ae9d92-9b96-4f28-86a5-af93cce04be0"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Pointer"",
+                    ""action"": ""Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""modifier1"",
+                    ""id"": ""d2a4ec68-c065-4dc3-8f4d-864d8595c16f"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Pointer"",
+                    ""action"": ""Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""modifier2"",
+                    ""id"": ""d1c1db86-5038-4282-8da6-61aa0d452bde"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Pointer"",
+                    ""action"": ""Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""f39c0e3c-3f51-4dbd-889b-0629c9a5e8cf"",
+                    ""path"": ""TwoModifiers(modifiersOrder=1)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Debug"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""7d4b8592-17bf-4532-b77d-f8edcdc49e45"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""modifier1"",
+                    ""id"": ""3b464b87-a04a-4988-b34c-92c817634db0"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""modifier2"",
+                    ""id"": ""29e490f8-6aa9-493a-812c-56333b7b3a02"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""Debug"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -1172,6 +1375,8 @@ namespace Breaddog.Input
             m_Game_Reload = m_Game.FindAction("Reload", throwIfNotFound: true);
             m_Game_NextItem = m_Game.FindAction("NextItem", throwIfNotFound: true);
             m_Game_PreviousItem = m_Game.FindAction("PreviousItem", throwIfNotFound: true);
+            m_Game_Inventory = m_Game.FindAction("Inventory", throwIfNotFound: true);
+            m_Game_Map = m_Game.FindAction("Map", throwIfNotFound: true);
             m_Game_Menu = m_Game.FindAction("Menu", throwIfNotFound: true);
             m_Game_Flashlight = m_Game.FindAction("Flashlight", throwIfNotFound: true);
             // UI
@@ -1184,6 +1389,7 @@ namespace Breaddog.Input
             m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
             m_UI_MiddleClick = m_UI.FindAction("MiddleClick", throwIfNotFound: true);
             m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
+            m_UI_Debug = m_UI.FindAction("Debug", throwIfNotFound: true);
             m_UI_Quit = m_UI.FindAction("Quit", throwIfNotFound: true);
         }
 
@@ -1278,6 +1484,8 @@ namespace Breaddog.Input
         private readonly InputAction m_Game_Reload;
         private readonly InputAction m_Game_NextItem;
         private readonly InputAction m_Game_PreviousItem;
+        private readonly InputAction m_Game_Inventory;
+        private readonly InputAction m_Game_Map;
         private readonly InputAction m_Game_Menu;
         private readonly InputAction m_Game_Flashlight;
         /// <summary>
@@ -1339,6 +1547,14 @@ namespace Breaddog.Input
             /// Provides access to the underlying input action "Game/PreviousItem".
             /// </summary>
             public InputAction @PreviousItem => m_Wrapper.m_Game_PreviousItem;
+            /// <summary>
+            /// Provides access to the underlying input action "Game/Inventory".
+            /// </summary>
+            public InputAction @Inventory => m_Wrapper.m_Game_Inventory;
+            /// <summary>
+            /// Provides access to the underlying input action "Game/Map".
+            /// </summary>
+            public InputAction @Map => m_Wrapper.m_Game_Map;
             /// <summary>
             /// Provides access to the underlying input action "Game/Menu".
             /// </summary>
@@ -1409,6 +1625,12 @@ namespace Breaddog.Input
                 @PreviousItem.started += instance.OnPreviousItem;
                 @PreviousItem.performed += instance.OnPreviousItem;
                 @PreviousItem.canceled += instance.OnPreviousItem;
+                @Inventory.started += instance.OnInventory;
+                @Inventory.performed += instance.OnInventory;
+                @Inventory.canceled += instance.OnInventory;
+                @Map.started += instance.OnMap;
+                @Map.performed += instance.OnMap;
+                @Map.canceled += instance.OnMap;
                 @Menu.started += instance.OnMenu;
                 @Menu.performed += instance.OnMenu;
                 @Menu.canceled += instance.OnMenu;
@@ -1462,6 +1684,12 @@ namespace Breaddog.Input
                 @PreviousItem.started -= instance.OnPreviousItem;
                 @PreviousItem.performed -= instance.OnPreviousItem;
                 @PreviousItem.canceled -= instance.OnPreviousItem;
+                @Inventory.started -= instance.OnInventory;
+                @Inventory.performed -= instance.OnInventory;
+                @Inventory.canceled -= instance.OnInventory;
+                @Map.started -= instance.OnMap;
+                @Map.performed -= instance.OnMap;
+                @Map.canceled -= instance.OnMap;
                 @Menu.started -= instance.OnMenu;
                 @Menu.performed -= instance.OnMenu;
                 @Menu.canceled -= instance.OnMenu;
@@ -1513,6 +1741,7 @@ namespace Breaddog.Input
         private readonly InputAction m_UI_ScrollWheel;
         private readonly InputAction m_UI_MiddleClick;
         private readonly InputAction m_UI_RightClick;
+        private readonly InputAction m_UI_Debug;
         private readonly InputAction m_UI_Quit;
         /// <summary>
         /// Provides access to input actions defined in input action map "UI".
@@ -1557,6 +1786,10 @@ namespace Breaddog.Input
             /// Provides access to the underlying input action "UI/RightClick".
             /// </summary>
             public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
+            /// <summary>
+            /// Provides access to the underlying input action "UI/Debug".
+            /// </summary>
+            public InputAction @Debug => m_Wrapper.m_UI_Debug;
             /// <summary>
             /// Provides access to the underlying input action "UI/Quit".
             /// </summary>
@@ -1611,6 +1844,9 @@ namespace Breaddog.Input
                 @RightClick.started += instance.OnRightClick;
                 @RightClick.performed += instance.OnRightClick;
                 @RightClick.canceled += instance.OnRightClick;
+                @Debug.started += instance.OnDebug;
+                @Debug.performed += instance.OnDebug;
+                @Debug.canceled += instance.OnDebug;
                 @Quit.started += instance.OnQuit;
                 @Quit.performed += instance.OnQuit;
                 @Quit.canceled += instance.OnQuit;
@@ -1649,6 +1885,9 @@ namespace Breaddog.Input
                 @RightClick.started -= instance.OnRightClick;
                 @RightClick.performed -= instance.OnRightClick;
                 @RightClick.canceled -= instance.OnRightClick;
+                @Debug.started -= instance.OnDebug;
+                @Debug.performed -= instance.OnDebug;
+                @Debug.canceled -= instance.OnDebug;
                 @Quit.started -= instance.OnQuit;
                 @Quit.performed -= instance.OnQuit;
                 @Quit.canceled -= instance.OnQuit;
@@ -1803,6 +2042,20 @@ namespace Breaddog.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnPreviousItem(InputAction.CallbackContext context);
             /// <summary>
+            /// Method invoked when associated input action "Inventory" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnInventory(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Map" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnMap(InputAction.CallbackContext context);
+            /// <summary>
             /// Method invoked when associated input action "Menu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>
             /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
@@ -1880,6 +2133,13 @@ namespace Breaddog.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnRightClick(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Debug" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnDebug(InputAction.CallbackContext context);
             /// <summary>
             /// Method invoked when associated input action "Quit" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
             /// </summary>

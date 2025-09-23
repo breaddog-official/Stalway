@@ -24,6 +24,7 @@ namespace Breaddog.SaveManagement
         public JsonSerializerSettings SerializerSettings => new()
         {
             Formatting = formatting,
+            TypeNameHandling = TypeNameHandling.Auto,
             ContractResolver = new DefaultContractResolver
             {
                 NamingStrategy = namingStrategy switch
@@ -47,7 +48,12 @@ namespace Breaddog.SaveManagement
             return JsonConvert.DeserializeObject(value, SerializerSettings);
         }
 
-        public virtual T Deserialize<T>(string value)
+        public virtual string SerializeType<T>(T value)
+        {
+            return JsonConvert.SerializeObject(value, typeof(T), SerializerSettings);
+        }
+
+        public virtual T DeserializeType<T>(string value)
         {
             return JsonConvert.DeserializeObject<T>(value, SerializerSettings);
         }

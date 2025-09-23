@@ -8,9 +8,9 @@ namespace Breaddog.SaveManagement
 {
     public enum DataLocation
     {
-        [Tooltip("Данные будут предпочтительно сохранены рядом с игрой")]
+        [Tooltip("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ")]
         PreferDefault,
-        [Tooltip("Данные будут предпочтительно сохранены в месте, которое не удаляется при удалении игры")]
+        [Tooltip("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ")]
         PreferPersistent
     }
 
@@ -21,7 +21,7 @@ namespace Breaddog.SaveManagement
         /// <summary>
         /// Persistent path for player's data
         /// </summary>
-        
+
         // Application.productName needed for platforms like UWP, because their persistentDataPath only has a company in path
 
         public static string PlayerDataPath => Path.Combine(GetDataPath(DataLocation.PreferPersistent), $"{Application.productName}PlayerData");
@@ -248,13 +248,13 @@ namespace Breaddog.SaveManagement
         public static T LoadAndDeserialize<T>(string path, IStringSaver saver, IStringSerializer serializer)
         {
             string loaded = saver.Load(path);
-            return serializer.Deserialize<T>(loaded);
+            return serializer.DeserializeType<T>(loaded);
         }
 
         public static async UniTask<T> LoadAndDeserializeAsync<T>(string path, IStringSaver saver, IStringSerializer serializer)
         {
             string loaded = await saver.LoadAsync(path);
-            return await serializer.DeserializeAsync<T>(loaded);
+            return await serializer.DeserializeTypeAsync<T>(loaded);
         }
 
         #endregion
@@ -286,7 +286,7 @@ namespace Breaddog.SaveManagement
             try
             {
                 string loaded = saver.Load(path);
-                value = serializer.Deserialize<T>(loaded);
+                value = serializer.DeserializeType<T>(loaded);
 
                 return true;
             }
@@ -355,13 +355,13 @@ namespace Breaddog.SaveManagement
         public static T LoadAndDeserializeBytes<T>(string path, IBytesSaver saver, IBytesSerializer serializer)
         {
             byte[] loaded = saver.LoadBytes(path);
-            return serializer.DeserializeBytes<T>(loaded);
+            return serializer.DeserializeBytesType<T>(loaded);
         }
 
         public static async UniTask<T> LoadAndDeserializeAsyncBytes<T>(string path, IBytesSaver saver, IBytesSerializer serializer)
         {
             byte[] loaded = await saver.LoadBytesAsync(path);
-            return await serializer.DeserializeBytesAsync<T>(loaded);
+            return await serializer.DeserializeBytesTypeAsync<T>(loaded);
         }
 
         #endregion
@@ -390,7 +390,7 @@ namespace Breaddog.SaveManagement
             try
             {
                 byte[] loaded = saver.LoadBytes(path);
-                value = serializer.DeserializeBytes<T>(loaded);
+                value = serializer.DeserializeBytesType<T>(loaded);
                 return true;
             }
             catch (Exception exp)

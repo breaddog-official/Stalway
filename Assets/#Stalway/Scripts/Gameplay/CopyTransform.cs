@@ -12,7 +12,7 @@ public class CopyTransform : MonoBehaviour
     public Transform Target => transform;
 
 
-    protected virtual void Update()
+    protected virtual void LateUpdate()
     {
         if (From != null)
         {

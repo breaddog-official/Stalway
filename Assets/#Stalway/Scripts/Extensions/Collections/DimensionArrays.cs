@@ -3,17 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Newtonsoft.Json;
 using Unity.Burst;
 using UnityEngine;
 
 namespace Breaddog.Extensions
 {
-    [Serializable, BurstCompile(DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance)]
+    [Serializable, JsonObject(MemberSerialization.OptIn), BurstCompile(DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance)]
     public class Array2D<T> : IEnumerable<T>, IEnumerable, IReadOnlyCollection<T>, IReadOnlyArray2D<T>
     {
-        [SerializeField, HideInInspector] private int width;
-        [SerializeField, HideInInspector] private int height;
-        [SerializeField, HideInInspector] private T[] data;
+        [SerializeField, HideInInspector, JsonProperty] private int width;
+        [SerializeField, HideInInspector, JsonProperty] private int height;
+        [SerializeField, HideInInspector, JsonProperty] private T[] data;
 
         public int Count => data.Length;
         public int Width
@@ -44,7 +45,10 @@ namespace Breaddog.Extensions
 
 
 
-
+        /// <summary>
+        /// Used only by serializers!
+        /// </summary>
+        public Array2D() { }
 
         public Array2D(int width, int height)
         {
@@ -140,6 +144,23 @@ namespace Breaddog.Extensions
             height = newHeight;
         }
 
+        public void ResizeAndFill(int newWidth, int newHeight, T fill)
+        {
+            var newData = new T[newWidth * newHeight];
+            int copyWidth = Math.Min(width, newWidth);
+            int copyHeight = Math.Min(height, newHeight);
+
+            for (int i = 0; i < newData.Length; i++)
+                newData[i] = fill;
+
+            for (int y = 0; y < copyHeight; y++)
+                Array.Copy(data, y * width, newData, y * newWidth, copyWidth);
+
+            data = newData;
+            width = newWidth;
+            height = newHeight;
+        }
+
         public override string ToString()
         {
             var result = new System.Text.StringBuilder();
@@ -204,13 +225,13 @@ namespace Breaddog.Extensions
         T this[int x, int y] { get; }
     }
 
-    [Serializable, BurstCompile(DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance)]
+    [Serializable, JsonObject(MemberSerialization.OptIn), BurstCompile(DisableSafetyChecks = true, OptimizeFor = OptimizeFor.Performance)]
     public class Array3D<T> : IEnumerable<T>, IEnumerable, IReadOnlyCollection<T>, IReadOnlyArray3D<T>
     {
-        [SerializeField, HideInInspector] private T[] data;
-        [SerializeField, HideInInspector] private int width;
-        [SerializeField, HideInInspector] private int height;
-        [SerializeField, HideInInspector] private int depth;
+        [SerializeField, HideInInspector, JsonProperty] private int width;
+        [SerializeField, HideInInspector, JsonProperty] private int height;
+        [SerializeField, HideInInspector, JsonProperty] private int depth;
+        [SerializeField, HideInInspector, JsonProperty] private T[] data;
 
 
         public int Count => data.Length;
@@ -236,6 +257,13 @@ namespace Breaddog.Extensions
         }
         public IReadOnlyList<T> RawData => data;
         public T[,,] AsArray => ToArray();
+
+
+
+        /// <summary>
+        /// Used only by serializers!
+        /// </summary>
+        public Array3D() { }
 
         public Array3D(int width, int height, int depth)
         {

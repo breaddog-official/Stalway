@@ -8,8 +8,8 @@ namespace Breaddog.AssetsManagement
 {
     public class AssetLoaderText<TText> : AssetLoaderContainer
     {
-        public IStringSaver Saver;
-        public IStringSerializer Serializer;
+        public IStringSaver Saver = new SaverIO();
+        public IStringSerializer Serializer = new SerializerJson();
 
         public override T GetDedicatedValue<T>(string absolutePath)
         {

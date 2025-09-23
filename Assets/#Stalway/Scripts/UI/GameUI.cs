@@ -1,62 +1,47 @@
-using Breaddog.Gameplay;
-using TMPro;
+using Breaddog.Input;
+using Mirror;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 namespace Breaddog.UI
 {
     public class GameUI : MonoBehaviour
     {
-        [Header("Health")]
-        public TMP_Text HealthText;
-        public TMP_Text ArmorText;
-        public Image ArmorTierImage;
-        public Sprite[] ArmorTierSprites;
+        public GameObject inventory;
 
-
-        [Header("Weapons")]
-        //public TMP_Text AmmoText;
-        //public TMP_Text AmmoBackpackText;
-        public Image[] WeaponsImages;
-
-
-        public Entity ObservingEntity => Entity.ObservingEntity;
-
-
-
-        protected void Update()
+        private void OnEnable()
         {
-            if (ObservingEntity == null)
-                return;
+            InputManager.ControlsGame.Inventory.performed += ToggleInventory;
+            InputManager.ControlsUI.Debug.performed += ToggleDebug;
+            InputManager.ControlsUI.Quit.performed += ToggleInventory;
+        }
 
+        private void OnDisable()
+        {
+            InputManager.ControlsGame.Inventory.performed -= ToggleInventory;
+            InputManager.ControlsUI.Debug.performed -= ToggleDebug;
+            InputManager.ControlsUI.Quit.performed -= ToggleInventory;
+        }
 
-            if (ObservingEntity.TryFindAbillity(out AbillityHealth health))
+        private void ToggleInventory(InputAction.CallbackContext ctx = default)
+        {
+            if (inventory.activeSelf)
             {
-                // Это конечно плохо что я прописываю дизайн прям в скрипте, но я думаю это не то о чём мне стоит волноваться
-                SetText(HealthText, $"{health.Health}");
-                //SetText(ArmorText, $"{health.Armor}%");
-                //SetSprite(ArmorTierImage, ArmorTierSprites.GetInRange(health.ArmorTier));
+                inventory.SetActive(false);
+                InputManager.SwitchGame();
             }
 
-            if (ObservingEntity.TryFindAbillity(out AbillityInventory inventory))
+            else
             {
-                //for (int i = 0; i < inventory.Items.Count; i++)
-                //{
-                //    SetSprite(WeaponsImages[i], inventory.Items[i]?.InventorySprite);
-                //}
+                inventory.SetActive(true);
+                InputManager.SwitchUI();
             }
         }
 
-        private void SetText(TMP_Text text, string value)
+        private void ToggleDebug(InputAction.CallbackContext ctx = default)
         {
-            if (text != null)
-                text.SetText(value);
-        }
-
-        private void SetSprite(Image image, Sprite value)
-        {
-            if (image != null)
-                image.sprite = value;
+            if (inventory.TryGetComponent(out StorageDrawer drawer))
+                drawer.AddTestItem();
         }
     }
 }

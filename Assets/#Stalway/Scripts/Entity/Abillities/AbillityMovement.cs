@@ -45,8 +45,7 @@ namespace Breaddog.Gameplay
 
 
         [Header("Forces")]
-        public float AccelerationForce = 10f;
-        public float AccelerationSmooth = 10f;
+        public float AccelerationSpeed = 1f;
         public float GroundGravityForce = 1f;
         public float AirGravityForce = 5f;
         public float JumpForce = 5f;
@@ -55,6 +54,10 @@ namespace Breaddog.Gameplay
         [Header("Speed Limits")]
         public float MaxGroundSpeed = 5f;
         public float MaxAirSpeed = 5f;
+
+        [ShowNativeProperty]
+        public float Speed => Rigidbody != null && Rigidbody.linearVelocity.magnitude > 0.01f ? Rigidbody.linearVelocity.magnitude : 0f;
+
 
         [Header("Speed Limits: Multipliers")]
         [Range(0f, 2f)] public float StandMultiplier = 1f;
@@ -81,13 +84,13 @@ namespace Breaddog.Gameplay
 
         private double lastMoveTime = -1;
         private bool lastMoveMode;
-        private Vector2 lastCalculatedVector;
+        private Vector3 lastCalculatedVector;
         private float headRotation;
         private PhysicsMaterial physicsMaterial;
 
         private AbillityCollisioner collisioner;
 
-        public Rigidbody Rigidbody => Authority == MoveAuthority.Prediction ? PredictedRb.predictedRigidbody : CommonRb;
+        public Rigidbody Rigidbody => Authority == MoveAuthority.Prediction ? PredictedRb?.predictedRigidbody : CommonRb;
 
         public event Action OnMove;
         public event Action OnLook;
@@ -156,7 +159,7 @@ namespace Breaddog.Gameplay
                     ApplyMove();
                     ApplyJump();
 
-                    LimitSpeed();
+                    //LimitSpeed();
                 }
             }
         }
@@ -183,32 +186,15 @@ namespace Breaddog.Gameplay
             if (AirMove == AirMoveMode.None && collisioner.IsAir())
                 return;
 
-            if (moveInput.Abs().LowerThen(MinMove) && (lastMoveTime < 0 || lastMoveMode == true))
-            {
-                lastMoveTime = NetworkTime.time;
-                lastMoveMode = false;
-            }
-
-            else if (moveInput.Abs().GreaterThen(MinMove) && (lastMoveTime < 0 || lastMoveMode == false))
-            {
-                lastMoveTime = NetworkTime.time;
-                lastMoveMode = true;
-            }
-
-
-            var t = (float)MathE.InverseLerp(lastMoveTime, lastMoveTime + 1d, NetworkTime.time);
 
             // Calculate move vector
             Vector3 calculatedVector = moveInput.Flatten().ClampMagnitude();
-            calculatedVector *= AccelerationForce;
-            calculatedVector *= Time.fixedDeltaTime;
+            Vector3 target = calculatedVector * GetMaxSpeed();
+            calculatedVector = (target - Rigidbody.linearVelocity.Flatten()) * AccelerationSpeed;
 
             // Apply multiply if needed
             if (AirMove == AirMoveMode.Multiplied)
                 calculatedVector *= collisioner.IsSlope() ? SlopeSpeedMultiplier : AirSpeedMultiplier;
-
-            //calculatedVector = Vector3.Lerp(lastMoveMode ? Vector3.zero : Vector3.one, calculatedVector, t);
-            //lastCalculatedVector = calculatedVector;
 
             // Apply movement
             Rigidbody.AddForce(calculatedVector, ForceMode.VelocityChange);
@@ -431,7 +417,7 @@ namespace Breaddog.Gameplay
         #endregion
 
         public float GetMaxSpeedMultiplier() => GetBodyPositionSpeed(collisioner.BodyPosition);
-        public float GetMaxSpeed() => GetMaxSpeedMultiplier() * (collisioner.IsGround() ? MaxGroundSpeed * moveInput.ClampMagnitude().magnitude : MaxAirSpeed);
+        public float GetMaxSpeed() => GetMaxSpeedMultiplier() * (/*collisioner.IsGround() ? MaxGroundSpeed * moveInput.ClampMagnitude().magnitude : */MaxAirSpeed);
         protected Vector3 GetUp() => collisioner.GetUp();
 
         /// <summary> Returns the velocity depending on the current authority mode </summary>

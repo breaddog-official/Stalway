@@ -30,7 +30,7 @@ namespace Breaddog.Network
 
         public Action<Operation> OnChange;
 
-        public readonly Storage storage = new(0, 0);
+        public readonly Storage storage = new();
         public bool IsReadOnly => !IsWritable();
 
         struct Change
@@ -326,7 +326,7 @@ namespace Breaddog.Network
         {
             int index = storage.PlaceItem(item, position, rotation);
 
-            if (index > Storage.defaultIndex)
+            if (index != Storage.defaultIndex)
             {
                 AddOperation(Operation.OP_PLACE, true, item: item, position: position, rotation: rotation);
             }
@@ -364,7 +364,7 @@ namespace Breaddog.Network
         {
             int index = storage.TryPlaceItem(item, out position, out rotation);
 
-            if (index > Storage.defaultIndex)
+            if (index != Storage.defaultIndex)
             {
                 AddOperation(Operation.OP_PLACE, true, item: item, position: position, rotation: rotation);
             }

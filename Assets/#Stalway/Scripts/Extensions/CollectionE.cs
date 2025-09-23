@@ -8,9 +8,6 @@ using UnityEngine;
 
 namespace Breaddog.Extensions
 {
-    /// <summary>
-    /// ������� � �������� �������������
-    /// </summary>
     public enum Rotation4 : byte
     {
         Up,
@@ -33,7 +30,7 @@ namespace Breaddog.Extensions
             switch (rotation)
             {
                 case Rotation4.Up:
-                    return new Array2D<bool>(shape); // �����
+                    return new Array2D<bool>(shape);
                 case Rotation4.Right:
                     result = new Array2D<bool>(h, w);
                     for (int y = 0; y < h; y++)
