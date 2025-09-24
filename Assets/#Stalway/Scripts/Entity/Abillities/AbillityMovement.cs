@@ -158,8 +158,6 @@ namespace Breaddog.Gameplay
 
                     ApplyMove();
                     ApplyJump();
-
-                    //LimitSpeed();
                 }
             }
         }
@@ -186,14 +184,13 @@ namespace Breaddog.Gameplay
             if (AirMove == AirMoveMode.None && collisioner.IsAir())
                 return;
 
-
             // Calculate move vector
             Vector3 calculatedVector = moveInput.Flatten().ClampMagnitude();
-            Vector3 target = calculatedVector * GetMaxSpeed();
-            calculatedVector = (target - Rigidbody.linearVelocity.Flatten()) * AccelerationSpeed;
+            Vector3 targetVector = calculatedVector * GetMaxSpeed();
+            calculatedVector = (targetVector - Rigidbody.linearVelocity.Flatten()) * AccelerationSpeed;
 
             // Apply multiply if needed
-            if (AirMove == AirMoveMode.Multiplied)
+            if (AirMove == AirMoveMode.Multiplied && collisioner.IsAir())
                 calculatedVector *= collisioner.IsSlope() ? SlopeSpeedMultiplier : AirSpeedMultiplier;
 
             // Apply movement
@@ -274,26 +271,13 @@ namespace Breaddog.Gameplay
         /// </summary>
         private void Gravity()
         {
-            // Predict jump, because GroundGravity is usually much stronger than AirGravity, and this can affect the force of the jump
+            // Predict jump, because GroundGravity can be much stronger than AirGravity, and this can affect the force of the jump
             var willJump = jumpInput && CanJump();
 
             var force = collisioner.IsAir() || willJump ? AirGravityForce : GroundGravityForce;
             var forceVector = -GetUp() * force * Rigidbody.mass * Time.fixedDeltaTime;
 
             Rigidbody.AddForce(forceVector, ForceMode.VelocityChange);
-        }
-
-        private void LimitSpeed()
-        {
-            Vector3 xzVelocity = Rigidbody.linearVelocity.Flatten();
-
-            if (xzVelocity.magnitude > GetMaxSpeed())
-            {
-                xzVelocity = xzVelocity.normalized * GetMaxSpeed();
-                xzVelocity.y = Rigidbody.linearVelocity.y;
-
-                Rigidbody.linearVelocity = xzVelocity;
-            }
         }
 
         private void UpdateFriction()
@@ -417,7 +401,7 @@ namespace Breaddog.Gameplay
         #endregion
 
         public float GetMaxSpeedMultiplier() => GetBodyPositionSpeed(collisioner.BodyPosition);
-        public float GetMaxSpeed() => GetMaxSpeedMultiplier() * (/*collisioner.IsGround() ? MaxGroundSpeed * moveInput.ClampMagnitude().magnitude : */MaxAirSpeed);
+        public float GetMaxSpeed() => GetMaxSpeedMultiplier() * (collisioner.IsGround() ? MaxGroundSpeed : MaxAirSpeed);
         protected Vector3 GetUp() => collisioner.GetUp();
 
         /// <summary> Returns the velocity depending on the current authority mode </summary>

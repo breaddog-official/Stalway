@@ -818,9 +818,9 @@ MonoBehaviour:
   AirMove: 1
   AirSpeedMultiplier: 0.4
   SlopeSpeedMultiplier: 0.1
-  AccelerationSpeed: 1
+  AccelerationSpeed: 0.8
   GroundGravityForce: 5
-  AirGravityForce: 17.5
+  AirGravityForce: 16
   JumpForce: 5
   MaxGroundSpeed: 3
   MaxAirSpeed: 3
@@ -990,8 +990,8 @@ MonoBehaviour:
   SimpleJump: 1
   TurnSmooth: 0.15
   TurnAngle: 45
-  SpeedSmooth: 0.05
-  SpeedMultiplier: 0.75
+  SpeedSmooth: 0.2
+  SpeedMultiplier: 0.8
   PlayStepSounds: 1
   PlayStepExcludeLay: 1
   StepPivotRange: 0.1

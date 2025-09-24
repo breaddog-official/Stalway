@@ -13,7 +13,7 @@ namespace Breaddog.Network
 
         public Action OnRemove;
 
-        public Action OnReplace;
+        public Action OnMove;
 
         public Action OnResize;
 
@@ -23,7 +23,7 @@ namespace Breaddog.Network
         {
             OP_PLACE,
             OP_REMOVE,
-            OP_REPLACE,
+            OP_MOVE,
             OP_RESIZE,
             OP_CLEAR,
         }
@@ -95,7 +95,7 @@ namespace Breaddog.Network
                         index = index,
                     };
                     break;
-                case Operation.OP_REPLACE:
+                case Operation.OP_MOVE:
                     change = new Change
                     {
                         operation = op,
@@ -134,8 +134,8 @@ namespace Breaddog.Network
                 case Operation.OP_REMOVE:
                     OnRemove?.Invoke();
                     break;
-                case Operation.OP_REPLACE:
-                    OnReplace?.Invoke();
+                case Operation.OP_MOVE:
+                    OnMove?.Invoke();
                     break;
                 case Operation.OP_RESIZE:
                     OnResize?.Invoke();
@@ -184,7 +184,7 @@ namespace Breaddog.Network
                         Compression.CompressVarInt(writer, change.index);
                         break;
 
-                    case Operation.OP_REPLACE:
+                    case Operation.OP_MOVE:
                         Compression.CompressVarInt(writer, change.index);
                         writer.WriteVector2Int(change.position);
                         writer.WriteByte((byte)change.rotation);
@@ -265,19 +265,19 @@ namespace Breaddog.Network
                         }
                         break;
 
-                    case Operation.OP_REPLACE:
+                    case Operation.OP_MOVE:
                         index = (int)Compression.DecompressVarInt(reader);
                         pos = reader.ReadVector2Int();
                         rot = (Rotation4)reader.ReadByte();
 
                         if (apply)
                         {
-                            storage.ReplaceItem(index, pos, rot);
+                            storage.MoveItem(index, pos, rot);
                             // add dirty + changes.
                             // ClientToServer needs to set dirty in server OnDeserialize.
                             // no access check: server OnDeserialize can always
                             // write, even for ClientToServer (for broadcasting).
-                            AddOperation(Operation.OP_REPLACE, false, index: index, position: pos, rotation: rot);
+                            AddOperation(Operation.OP_MOVE, false, index: index, position: pos, rotation: rot);
                         }
                         break;
 
@@ -341,16 +341,18 @@ namespace Breaddog.Network
                 AddOperation(Operation.OP_REMOVE, true, index: index);
                 return true;
             }
+
             return false;
         }
 
-        public bool ReplaceItem(int itemIndex, Vector2Int position, Rotation4 rotation)
+        public bool MoveItem(int itemIndex, Vector2Int position, Rotation4 rotation)
         {
-            if (storage.ReplaceItem(itemIndex, position, rotation))
+            if (storage.MoveItem(itemIndex, position, rotation))
             {
                 AddOperation(Operation.OP_REMOVE, true, index: itemIndex, position: position, rotation: rotation);
                 return true;
             }
+
             return false;
         }
 

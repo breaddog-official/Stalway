@@ -112,7 +112,7 @@ namespace Breaddog.Gameplay.StorageManagement
             return true;
         }
 
-        public bool ReplaceItem(int itemIndex, Vector2Int position, Rotation4 rotation)
+        public bool MoveItem(int itemIndex, Vector2Int position, Rotation4 rotation)
         {
             if (InBounds(itemIndex) == false)
                 return false;
@@ -122,7 +122,7 @@ namespace Breaddog.Gameplay.StorageManagement
             var newShape = item.rotation != rotation ?
                            item.itemAsset.Shape.RotateShape(rotation) : oldShape;
 
-            if (CanPlace(newShape, position) == false)
+            if (CanPlace(newShape, position, itemIndex) == false)
                 return false;
 
             // Remove
@@ -190,12 +190,12 @@ namespace Breaddog.Gameplay.StorageManagement
 
 
 
-        internal void SetPlaces(Array2D<int> places)
+        public void SetPlaces(Array2D<int> places)
         {
             this.places = places;
         }
 
-        internal void SetItems(List<StoredItem> items)
+        public void SetItems(List<StoredItem> items)
         {
             this.items = items;
         }
@@ -203,11 +203,11 @@ namespace Breaddog.Gameplay.StorageManagement
 
 
 
-        public bool CanPlace(Array2D<bool> shape, Vector2Int pos)
+        public bool CanPlace(Array2D<bool> shape, Vector2Int pos, int ignoreIndex = defaultIndex)
         {
             for (int dy = 0; dy < shape.Height; dy++)
                 for (int dx = 0; dx < shape.Width; dx++)
-                    if (shape[dx, dy] && (!InBounds(pos.x + dx, pos.y + dy) || places[pos.x + dx, pos.y + dy] != defaultIndex))
+                    if (shape[dx, dy] && (!InBounds(pos.x + dx, pos.y + dy) || (places[pos.x + dx, pos.y + dy] != defaultIndex && places[pos.x + dx, pos.y + dy] != ignoreIndex)))
                         return false;
 
             return true;
