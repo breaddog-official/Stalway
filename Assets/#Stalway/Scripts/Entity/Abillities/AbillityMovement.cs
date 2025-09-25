@@ -82,9 +82,6 @@ namespace Breaddog.Gameplay
         private Vector2 lookInput;
         private bool jumpInput;
 
-        private double lastMoveTime = -1;
-        private bool lastMoveMode;
-        private Vector3 lastCalculatedVector;
         private float headRotation;
         private PhysicsMaterial physicsMaterial;
 

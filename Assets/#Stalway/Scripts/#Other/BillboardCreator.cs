@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.IO;
 using NaughtyAttributes;
 using UnityEditor;
@@ -125,3 +126,4 @@ public class BillboardCreator : MonoBehaviour
         AssetDatabase.Refresh();
     }
 }
+#endif

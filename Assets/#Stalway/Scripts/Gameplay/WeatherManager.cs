@@ -77,7 +77,9 @@ public class WeatherManager : NetworkBehaviour
         Directional.color = Color.Lerp(weather.LightColorNight, weather.LightColorDay, tNoon);
 
         // Render Settings
-        RenderSettings.ambientLight = Color.Lerp(weather.AmbientColorNight, weather.AmbientColorDay, tNoon);
+        RenderSettings.ambientSkyColor = Color.Lerp(weather.AmbientColorNight.SkyColor, weather.AmbientColorDay.SkyColor, tNoon);
+        RenderSettings.ambientEquatorColor = Color.Lerp(weather.AmbientColorNight.EquatorColor, weather.AmbientColorDay.EquatorColor, tNoon);
+        RenderSettings.ambientGroundColor = Color.Lerp(weather.AmbientColorNight.GroundColor, weather.AmbientColorDay.GroundColor, tNoon);
         RenderSettings.skybox = weather.Skybox;
 
         // Skybox
@@ -108,8 +110,8 @@ public class WeatherSettings
     public float ShadowsStrength = 1f;
     [Header("Skybox"), MinMaxRangeSlider(0f, 3f)]
     public Vector2 SkyboxExposure;
-    public Color AmbientColorDay;
-    public Color AmbientColorNight;
+    public EnvironmentGradient AmbientColorDay;
+    public EnvironmentGradient AmbientColorNight;
     public Material Skybox;
     public bool ControlExposure = true;
     public bool ControlRotation = true;
@@ -119,4 +121,12 @@ public class WeatherSettings
 
     public float SkyboxExposureDay => SkyboxExposure.y;
     public float SkyboxExposureNight => SkyboxExposure.x;
+}
+
+[Serializable]
+public struct EnvironmentGradient
+{
+    [ColorUsage(false, true)] public Color SkyColor;
+    [ColorUsage(false, true)] public Color EquatorColor;
+    [ColorUsage(false, true)] public Color GroundColor;
 }

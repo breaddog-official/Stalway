@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cb82a87a4954a947923856a12b49b38, type: 3}
   m_Name: Brick
   m_EditorClassIdentifier: 
-  lowFreqAbsorption: 0.03
-  midFreqAbsorption: 0.04
-  highFreqAbsorption: 0.07
-  scattering: 0.05
-  lowFreqTransmission: 0.015
-  midFreqTransmission: 0.015
-  highFreqTransmission: 0.015
+  lowFreqAbsorption: 0.098
+  midFreqAbsorption: 0.16
+  highFreqAbsorption: 0.189
+  scattering: 0.25
+  lowFreqTransmission: 0.549
+  midFreqTransmission: 0.561
+  highFreqTransmission: 0.557
