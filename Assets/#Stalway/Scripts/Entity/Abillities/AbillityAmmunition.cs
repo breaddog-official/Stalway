@@ -9,9 +9,9 @@ namespace Breaddog.Gameplay
         [Header("Links")]
         public Transform ItemParent;
 
-        [field: SyncVar] public ItemWeapon WeaponFirst { get; protected set; }
-        [field: SyncVar] public ItemWeapon WeaponSecond { get; protected set; }
-        [field: SyncVar] public ItemWeapon WeaponHolster { get; protected set; }
-        [field: SyncVar] public ItemWeapon WeaponKnife { get; protected set; }
+        [field: SyncVar] public IItemWeapon WeaponFirst { get; protected set; }
+        [field: SyncVar] public IItemWeapon WeaponSecond { get; protected set; }
+        [field: SyncVar] public IItemWeapon WeaponHolster { get; protected set; }
+        [field: SyncVar] public IItemWeapon WeaponKnife { get; protected set; }
     }
 }

@@ -72,7 +72,7 @@ public class WeatherManager : NetworkBehaviour
         var tNoon = Mathf.Sin(Mathf.InverseLerp(Sunrise, Moonrise, hour) * Mathf.PI);
         var tMidnight = Mathf.Sin(Mathf.InverseLerp(Moonrise, Sunrise + Moonrise, hour > Moonrise ? hour : hour + HoursInDay) * Mathf.PI);
 
-        Directional.shadowStrength = Mathf.Lerp(0f, weather.ShadowsStrength, isDay ? tNoon : tMidnight);
+        //Directional.shadowStrength = Mathf.Lerp(0f, weather.ShadowsStrength, isDay ? tNoon : tMidnight);
         Directional.intensity = Mathf.Lerp(weather.LightIntensityNight, weather.LightIntensityDay, tNoon);
         Directional.color = Color.Lerp(weather.LightColorNight, weather.LightColorDay, tNoon);
 

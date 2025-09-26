@@ -4,7 +4,7 @@ namespace Breaddog.Gameplay
 {
     public abstract class Weapon : ItemUser
     {
-        public ItemWeapon Item;
+        public IItemWeapon Item;
 
 
         public override void StartUsing() => StartFire();

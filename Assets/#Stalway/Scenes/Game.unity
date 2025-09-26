@@ -18933,7 +18933,7 @@ MonoBehaviour:
   ItemsParent: {fileID: 2142018023404475500}
   CellPrefab: {fileID: 1254922345236333072}
   ItemPrefab: {fileID: 5433167736454306998}
-  TestItem: Data/Configs/TestItem
+  TestItem: Data/Configs/PM
 --- !u!114 &8926228470663894207
 MonoBehaviour:
   m_ObjectHideFlags: 0

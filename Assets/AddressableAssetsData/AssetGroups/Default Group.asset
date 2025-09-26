@@ -15,13 +15,28 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: 820f3dc23f98fac459b1e51292284eaf
   m_SerializeEntries:
+  - m_GUID: 3cc74cbca775f2b4a8ab4715c851be52
+    m_Address: Data/Configs/PM
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a0877aea38caa4548a540899109b4b87
     m_Address: Data/Configs/TestItem
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a4a3c62a072ed5b49a3400d9e0eb2f92
+    m_Address: Data/Sprites/pm_inventory
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bf69730d259b1394489de855cad422cf
     m_Address: Data/Sprites/TestSprite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cdfa0c8e0ce621945a4bf92fbf3b8ad9
+    m_Address: Data/Models/PM
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
